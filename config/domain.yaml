@@ -133,6 +133,10 @@ files:
     - local-script.sh
   core:
     - core/base.sh
+    - core/firstrun.sh
+    - core/chrony.sh
+    - core/syslog.sh
+    - core/postfix.sh
     - core/network-base.sh
     - core/network-ipmi.sh
     - core/network-join.sh
