@@ -142,7 +142,6 @@ files:
     - core/network-join.sh
     - core/networking.sh
     - core/configs/authorized_keys
-    - core/configs/ntp
   scripts:
     - local-script.sh
 
