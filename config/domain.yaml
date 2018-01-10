@@ -28,7 +28,6 @@ networks:
     netmask: "<%= answer.pri_network_netmask %>"
     network: "<%= answer.pri_network_network %>"
     gateway: "<%= answer.pri_network_gateway %>"
-    type:
     primary: true
     named_fwd_zone: "<%= config.networks.pri.domain %>.<%= config.domain %>"
     named_rev_zone: <% split_net = answer.pri_network_network.split(/\./) -%><%= split_net[1] %>.<%= split_net[0] %>
@@ -44,7 +43,6 @@ networks:
     netmask: "<%= answer.mgt_network_netmask %>"
     network: "<%= answer.mgt_network_network %>"
     gateway:
-    type:
     named_fwd_zone: "<%= config.networks.mgt.domain %>.<%= config.domain %>"
     named_rev_zone: <% split_net = answer.mgt_network_network.split(/\./) -%><%= split_net[1] %>.<%= split_net[0] %>
     firewallpolicy: trusted
@@ -59,7 +57,6 @@ networks:
     netmask: "<%= answer.ib_network_netmask %>"
     network: "<%= answer.ib_network_network %>"
     gateway:
-    type:
     named_fwd_zone: "<%= config.networks.ib.domain %>.<%= config.domain %>"
     named_rev_zone: <% split_net = answer.ib_network_network.split(/\./) -%><%= split_net[1] %>.<%= split_net[0] %>
     firewallpolicy: trusted
