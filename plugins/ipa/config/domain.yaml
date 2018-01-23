@@ -1,7 +1,7 @@
 files:
   setup:
     - /var/lib/metalware/repo/plugins/ipa/files/02-ipa.sh
-ipa_serverip: <%= answer.ipa_serverip %>
-ipa_servername: <%= answer.ipa_servername %>
-ipa_insecurepassword: <%= answer.ipa_insecurepassword %>
-ipa_userdir: <%= answer.userdir %>
+ipa_serverip: <%= plugin.ipa.answer.ipa_serverip %>
+ipa_servername: <%= plugin.ipa.answer.ipa_servername %>
+ipa_insecurepassword: <%= plugin.ipa.answer.ipa_insecurepassword %>
+ipa_userdir: <%= plugin.ipa.answer.userdir %>
