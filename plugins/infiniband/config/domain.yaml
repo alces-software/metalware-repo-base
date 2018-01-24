@@ -1,0 +1,7 @@
+files:
+  setup:
+    - /var/lib/metalware/repo/plugins/infiniband/files/06-infiniband.sh
+networks:
+  ib:
+    ib_use_installer: <%= plugins.infiniband.answer.ib_use_installer %>
+    mellanoxinstaller: <%= plugins.infiniband.answer.mellanoxinstaller %>
