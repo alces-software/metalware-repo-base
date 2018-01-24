@@ -1,0 +1,34 @@
+question:
+  - &slurm_isserver
+    identifier: slurm_isserver
+    question: 'Is this the SLURM controller?'
+    type: 'boolean'
+
+  - &slurm_servername
+    identifier: slurm_servername
+    question: 'SLURM server name'
+
+  - &slurm_mungekey
+    identifier: slurm_mungekey
+    question: 'Munge auth key'
+
+domain:
+  - *slurm_isserver
+  - *slurm_servername
+  - *slurm_mungekey
+
+group:
+  - *slurm_isserver
+  - *slurm_servername
+  - *slurm_mungekey
+
+node:
+  - *slurm_isserver
+  - *slurm_servername
+  - *slurm_mungekey
+
+local:
+  - *slurm_isserver
+  - *slurm_servername
+  - *slurm_mungekey
+
