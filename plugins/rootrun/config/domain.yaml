@@ -1,0 +1,3 @@
+rootrun_scriptdir: <%= plugins.rootrun.answer.rootrun_scriptdir %>
+rootrun_userlogdir: <%= plugins.rootrun.answer.rootrun_userlogdir %>
+rootrun_adminlogdir: <%= plugins.rootrun.answer.rootrun_adminlogdir %>
