@@ -22,14 +22,14 @@ echo "$EXPORTS" > /etc/exports
 <% elsif (!plugin.nis.config.nis_isserver rescue true) -%>
 
 MOUNTS=`cat << EOF
-<% plugin.nfs.answer.nfs_mounts.each do | mount, path | -%>
+<% plugin.nfs.config.nfs_mounts.each do | mount, path | -%>
 <%= path.server %>:<%= path.export %>    <%= mount %>    nfs    <%= if defined?(path.options) then path.options else 'intr,rsize=32768,wsize=32768,vers=3,_netdev' end -%>    0 0
 <% end -%>
 EOF`
 
 echo "$MOUNTS" >> /etc/fstab
 
-<% plugin.nfs.answer.nfs_mounts.each do | mount, path | -%>
+<% plugin.nfs.config.nfs_mounts.each do | mount, path | -%>
 mkdir -p <%= path.target %>
 <% end -%>
 
