@@ -1,0 +1,7 @@
+fligthcenter_archivedir: '<%= plugins.flightcenter.answer.flightcenter_archivedir %>'
+fligthcenter_sharedscratchdir: '<%= plugins.flightcenter.answer.flightcenter_sharedscratchdir %>'
+fligthcenter_localscratchdir: '<%= plugins.flightcenter.answer.flightcenter_localscratchdir %>'
+# mailserver: flightcenter-mail.flightcenter.alces-flight.com
+fligthcenter_mailserver: 10.78.0.15
+# ntpserver: flightcenter-mail.flightcenter.alces-flight.com
+fligthcenter_ntpserver: 10.78.0.15
