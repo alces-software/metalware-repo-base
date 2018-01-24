@@ -1,0 +1,3 @@
+files:
+  scripts:
+    - /var/lib/metalware/repo/plugins/nvidia/files/06-slurm.sh
