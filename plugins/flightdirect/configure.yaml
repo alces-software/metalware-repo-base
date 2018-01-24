@@ -1,0 +1,26 @@
+questions:
+  - &flightdirect_isserver
+    identifier: flightdirect_isserver
+    question: 'Is a login node?'
+    type: 'boolean'
+
+  - &flightdirect_isclient
+    identifier: flightdirect_isclient
+    question: 'Is a compute node?'
+    type: 'boolean'
+
+domain:
+  - *flightdirect_isserver
+  - *flightdirect_isclient
+
+group:
+  - *flightdirect_isserver
+  - *flightdirect_isclient
+
+node:
+  - *flightdirect_isserver
+  - *flightdirect_isclient
+
+local:
+  - *flightdirect_isserver
+  - *flightdirect_isclient
