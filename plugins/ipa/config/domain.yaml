@@ -1,5 +1,5 @@
 files:
-  setup:
+  scripts:
     - /var/lib/metalware/repo/plugins/ipa/files/02-ipa.sh
 ipa_serverip: <%= plugin.ipa.answer.ipa_serverip %>
 ipa_servername: <%= plugin.ipa.answer.ipa_servername %>
