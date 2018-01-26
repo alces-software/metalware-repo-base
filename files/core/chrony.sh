@@ -4,11 +4,7 @@
 #Cluster: <%= config.cluster %>
 
 yum -y install chrony
-<% if config.ntp.is_server -%>
-install_file chrony.conf.slave /etc/chrony.conf
-<% else -%>
-install_file chrony.conf.master /etc/chrony.conf
-<% end -%>
+install_file chrony.conf /etc/chrony.conf
 systemctl start chronyd
 systemctl enable chronyd
 
