@@ -1,7 +1,7 @@
 files:
   scripts:
     - /var/lib/metalware/repo/plugins/ipa/files/02-ipa.sh
-ipa_serverip: <%= plugin.ipa.answer.ipa_serverip %>
-ipa_servername: <%= plugin.ipa.answer.ipa_servername %>
-ipa_insecurepassword: <%= plugin.ipa.answer.ipa_insecurepassword %>
-ipa_userdir: <%= plugin.ipa.answer.userdir %>
+ipa_serverip: <%= plugins.ipa.answer.ipa_serverip %>
+ipa_servername: <%= plugins.ipa.answer.ipa_servername %>
+ipa_insecurepassword: <%= plugins.ipa.answer.ipa_insecurepassword %>
+ipa_userdir: <%= plugins.ipa.answer.userdir %>
