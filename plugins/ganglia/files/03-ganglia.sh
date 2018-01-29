@@ -24,7 +24,7 @@ host {
   location = "unspecified"
 }
 udp_send_channel {
-  mcast_join = <%= plugins.ganglia.config.ganglia_serverip %>
+  mcast_join = <%= node.plugins.ganglia.config.ganglia_serverip %>
   port = 8649
   ttl = 1
 }
@@ -277,11 +277,11 @@ EOF
 
 yum -y install ganglia-gmond
 
-<% if (plugins.ganglia.config.ganglia_isserver rescue false) then -%>
+<% if (node.plugins.ganglia.config.ganglia_isserver rescue false) then -%>
 GMETAD=`cat << EOF
 data_source '<%= node.name %>' localhost:8659
 gridname '<%= domain.config.cluster %>'
-authority "http://<%= plugins.ganglia.config.ganglia_serverip %>/ganglia/"
+authority "http://<%= node.plugins.ganglia.config.ganglia_serverip %>/ganglia/"
 setuid_username ganglia
 case_sensitive_hostnames 0
 EOF

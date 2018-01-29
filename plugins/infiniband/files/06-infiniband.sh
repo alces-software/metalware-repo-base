@@ -4,8 +4,8 @@ YUM_COMMON="-e 0 -y -x compat-openmpi -x compate-openmpi-psm install @infiniband
 
 # Mellanox Infiniband
 if (lsmod |grep -q mlx4_core) ; then
-    <% if (plugins.infiniband.config.ib_use_installer rescue false) -%>
-    curl <%= plugins.infiniband.config.mellanoxinstaller %> > /tmp/MLNX_OFED_INSTALLER.tgz
+    <% if (node.plugins.infiniband.config.ib_use_installer rescue false) -%>
+    curl <%= node.plugins.infiniband.config.mellanoxinstaller %> > /tmp/MLNX_OFED_INSTALLER.tgz
     tar -zxvf /tmp/MLNX_OFED_INSTALLER.tgz -C /tmp/
     rm -v /tmp/MLNX_OFED_INSTALLER.tgz
     cd /tmp/MLNX_*

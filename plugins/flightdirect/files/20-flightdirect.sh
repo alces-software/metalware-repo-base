@@ -1,6 +1,6 @@
 wget -O /tmp/flight-install https://s3-eu-west-1.amazonaws.com/alces-flight/FlightDirect/1.0.2/flight-install
 
-<% if plugins.flightdirect.config.flightdirect_isclient -%>
+<% if node.plugins.flightdirect.config.flightdirect_isclient -%>
 cat << EOF > /tmp/config.yml
 roles:
 - compute
@@ -23,7 +23,7 @@ vpnport: ""
 vpnnetwork: ""
 vpnauth: ""
 EOF
-<% elsif plugins.flightdirect.config.flightdirect_isserver -%>
+<% elsif node.plugins.flightdirect.config.flightdirect_isserver -%>
 cat << EOF > /tmp/config.yml
 roles:
 - user

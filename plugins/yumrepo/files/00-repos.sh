@@ -1,5 +1,5 @@
 yum install -y yum-plugin-priorities yum-utils
-<% if (plugins.yumrepo.config.yumrepo_isserver rescue false) -%>
+<% if (node.plugins.yumrepo.config.yumrepo_isserver rescue false) -%>
 yum -y install createrepo httpd git ruby
 # Download repoman
 cd /opt/
@@ -18,7 +18,7 @@ mkdir -p /opt/alces/repo/
 #
 # XXX Don't actually mirror servers - this should be done manually
 #
-#/opt/repoman/repoman.rb generate --distro centos7 --include <%= plugins.yumrepo.config.yumrepo_sourcerepos %> --outfile /opt/alces/repo/client.repo
+#/opt/repoman/repoman.rb generate --distro centos7 --include <%= node.plugins.yumrepo.config.yumrepo_sourcerepos %> --outfile /opt/alces/repo/client.repo
 
 # HTTP setup
 cat << EOF > /etc/httpd/conf.d/repo.conf
@@ -36,9 +36,9 @@ systemctl enable httpd.service
 systemctl restart httpd.service
 
 <% else -%>
-<%     if (plugins.yumrepo.config.yumrepo_useclientrepofile rescue false) -%>
+<%     if (node.plugins.yumrepo.config.yumrepo_useclientrepofile rescue false) -%>
 find /etc/yum.repos.d/*.repo -exec mv -fv {} {}.bak \;
-curl <%= plugins.yumrepo.config.yumrepo_clientrepofile %> > /etc/yum.repos.d/cluster.repo
+curl <%= node.plugins.yumrepo.config.yumrepo_clientrepofile %> > /etc/yum.repos.d/cluster.repo
 yum clean all
 <%     end -%>
 <% end -%>

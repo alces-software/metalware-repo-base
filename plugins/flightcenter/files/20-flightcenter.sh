@@ -27,9 +27,9 @@ cat << 'EOF' > /etc/profile.d/alces-fs.sh
 ##
 ################################################################################
 
-ARCHIVE_DIR="<%= plugins.flightcenter.config.flightcenter_archivedir %>"
-SHAREDSCRATCH_DIR="<%= plugins.flightcenter.config.flightcenter_sharedscratchdir %>"
-LOCALSCRATCH_DIR="<%= plugins.flightcenter.config.flightcenter_localscratchdir %>"
+ARCHIVE_DIR="<%= node.plugins.flightcenter.config.flightcenter_archivedir %>"
+SHAREDSCRATCH_DIR="<%= node.plugins.flightcenter.config.flightcenter_sharedscratchdir %>"
+LOCALSCRATCH_DIR="<%= node.plugins.flightcenter.config.flightcenter_localscratchdir %>"
 
 USERDIR=$USER/
 
@@ -90,7 +90,7 @@ EOF
 <% if node.name == 'local' -%>
 # NTP
 cat << EOF > /etc/chrony.conf
-server <%= plugins.flightcenter.config.flightcenter_ntpserver %> iburst
+server <%= node.plugins.flightcenter.config.flightcenter_ntpserver %> iburst
 
 stratumweight 0
 
@@ -119,7 +119,7 @@ allow <%= config.networks.pri.network %>/<% require 'ipaddr'; netmask=IPAddr.new
 EOF
 
 # Mail relay
-sed -n -e '/^relayhost\s*=/!p' -e '$arelayhost=[<%=plugins.flightcenter.config.flightcenter_mailserver%>]' /etc/postfix/main.cf -i
+sed -n -e '/^relayhost\s*=/!p' -e '$arelayhost=[<%=node.plugins.flightcenter.config.flightcenter_mailserver%>]' /etc/postfix/main.cf -i
 sed -n -e '/^inet_interfaces\s*=/!p' -e '$ainet_interfaces = all' /etc/postfix/main.cf -i
 cat << EOF >> /etc/postfix/main.cf
 sender_canonical_maps = regexp:/etc/postfix/master-rewrite-sender
