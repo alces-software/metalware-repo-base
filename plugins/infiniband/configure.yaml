@@ -4,8 +4,8 @@ questions:
     question: 'Use non-repo Infiniband installer?'
     type: 'boolean'
     dependent:
-      identifier: ib_mellanoxinstaller
-      question: 'Network location of installer'
+      - identifier: ib_mellanoxinstaller
+        question: 'Network location of installer'
 
 domain:
   - *ib_use_installer

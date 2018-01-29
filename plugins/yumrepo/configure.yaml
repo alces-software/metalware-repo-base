@@ -4,9 +4,9 @@ questions:
     question: 'Is a repo server?'
     type: 'boolean'
     dependent:
-      identifier: yumrepo_sourcerepos
-      question: 'Repoman source repo filenames'
-      default: 'base.upstream'
+      - identifier: yumrepo_sourcerepos
+        question: 'Repoman source repo filenames'
+        default: 'base.upstream'
 
   - &yumrepo_buildurl
     identifier: yumrepo_buildurl
@@ -23,26 +23,26 @@ questions:
     question: 'Define an upstream repofile for nodes to use locally?'
     type: 'boolean'
     dependent:
-      identifier: yumrepo_clientrepofile
-      question: 'URL for nodes'
-      default: 'http://10.10.0.1/repo/client.repo'
+      - identifier: yumrepo_clientrepofile
+        question: 'URL for nodes'
+        default: 'http://10.10.0.1/repo/client.repo'
 
 domain:
   - *yumrepo_isserver
   - *yumrepo_sourcerepos
-  - *yumrepo_useclientrepo
+  - *yumrepo_useclientrepofile
 
 group:
   - *yumrepo_isserver
   - *yumrepo_sourcerepos
-  - *yumrepo_useclientrepo
+  - *yumrepo_useclientrepofile
 
 node:
   - *yumrepo_isserver
   - *yumrepo_sourcerepos
-  - *yumrepo_useclientrepo
+  - *yumrepo_useclientrepofile
 
 local:
   - *yumrepo_isserver
   - *yumrepo_sourcerepos
-  - *yumrepo_useclientrepo
+  - *yumrepo_useclientrepofile
