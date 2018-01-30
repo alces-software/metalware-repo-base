@@ -1,5 +1,5 @@
 files:
   setup:
-    - /var/lib/metalware/repo/plugins/flightdirect/files/20-flightdirect.sh
+    - /var/lib/metalware/plugins/flightdirect/files/20-flightdirect.sh
 flightdirect_isserver: <%= node.plugins.flightdirect.answer.flightdirect_isserver %>
 flightdirect_isclient: <%= node.plugins.flightdirect.answer.flightdirect_isclient %>

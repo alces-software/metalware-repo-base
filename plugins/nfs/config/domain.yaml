@@ -1,6 +1,6 @@
 files:
   scripts:
-    - /var/lib/metalware/repo/plugins/nfs/files/01-nfs.sh
+    - /var/lib/metalware/plugins/nfs/files/01-nfs.sh
 nfs_isserver: <%= node.plugins.nfs.answer.nfs_isserver %>
 nfs_exports:
   /export/users:

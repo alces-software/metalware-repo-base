@@ -1,6 +1,6 @@
 files:
   scripts:
-    - /var/lib/metalware/repo/plugins/flightcenter/files/20-flightcenter.sh
+    - /var/lib/metalware/plugins/flightcenter/files/20-flightcenter.sh
 fligthcenter_archivedir: '<%= node.plugins.flightcenter.answer.flightcenter_archivedir %>'
 fligthcenter_sharedscratchdir: '<%= node.plugins.flightcenter.answer.flightcenter_sharedscratchdir %>'
 fligthcenter_localscratchdir: '<%= node.plugins.flightcenter.answer.flightcenter_localscratchdir %>'

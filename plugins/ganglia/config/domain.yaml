@@ -1,5 +1,5 @@
 files:
   scripts:
-    - /var/lib/metalware/repo/plugins/ganglia/files/03-ganglia.sh
+    - /var/lib/metalware/plugins/ganglia/files/03-ganglia.sh
 ganglia_isserver: <%= node.plugins.ganglia.answer.ganglia_isserver %>
 ganglia_serverip: <%= node.plugins.ganglia.answer.ganglia_serverip %>

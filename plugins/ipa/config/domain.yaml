@@ -1,6 +1,6 @@
 files:
   scripts:
-    - /var/lib/metalware/repo/plugins/ipa/files/02-ipa.sh
+    - /var/lib/metalware/plugins/ipa/files/02-ipa.sh
 ipa_serverip: <%= node.plugins.ipa.answer.ipa_serverip %>
 ipa_servername: <%= node.plugins.ipa.answer.ipa_servername %>
 ipa_insecurepassword: <%= node.plugins.ipa.answer.ipa_insecurepassword %>
