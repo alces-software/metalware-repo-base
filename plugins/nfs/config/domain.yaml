@@ -1,13 +1,13 @@
 files:
   scripts:
     - /var/lib/metalware/plugins/nfs/files/01-nfs.sh
-nfs_isserver: <%= node.plugins.nfs.answer.nfs_isserver %>
+nfs_isserver: <%= node.answer.nfs_isserver %>
 nfs_exports:
   /export/users:
   /export/data:
     # Modify the export options [optional]
     #options: <%= config.networks.pri.network %>/<%= config.networks.pri.netmask %>(ro,no_root_squash,async)
-nfs_isclient: <%= node.plugins.nfs.answer.nfs_issclient %>
+nfs_isclient: <%= node.answer.nfs_issclient %>
 nfs_mounts:
   /opt/users:
     defined: true

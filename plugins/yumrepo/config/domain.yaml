@@ -1,8 +1,8 @@
 files:
   setup:
     - /var/lib/metalware/plugins/yumfiles/00-repos.sh
-yumrepo_buildurl: <%= node.plugins.yumrepo.answer.yumrepo_buildurl %>
-yumrepo_isserver: <%= node.plugins.yumrepo.answer.yumrepo_isserver %>
-yumrepo_sourcerepos: <%= node.plugins.yumrepo.answer.yumrepo_sourcerepos %>
-yumrepo_useclientrepofile: <%= node.plugins.yumrepo.answer.yumrepo_useclientrepofile %>
-yumrepo_clientrepofile: <%= node.plugins.yumrepo.answer.yumrepo_clientrepofile %>
+yumrepo_buildurl: <%= node.answer.yumrepo_buildurl %>
+yumrepo_isserver: <%= node.answer.yumrepo_isserver %>
+yumrepo_sourcerepos: <%= node.answer.yumrepo_sourcerepos %>
+yumrepo_useclientrepofile: <%= node.answer.yumrepo_useclientrepofile %>
+yumrepo_clientrepofile: <%= node.answer.yumrepo_clientrepofile %>

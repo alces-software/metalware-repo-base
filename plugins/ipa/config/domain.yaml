@@ -1,7 +1,7 @@
 files:
   scripts:
     - /var/lib/metalware/plugins/ipa/files/02-ipa.sh
-ipa_serverip: <%= node.plugins.ipa.answer.ipa_serverip %>
-ipa_servername: <%= node.plugins.ipa.answer.ipa_servername %>
-ipa_insecurepassword: <%= node.plugins.ipa.answer.ipa_insecurepassword %>
-ipa_userdir: <%= node.plugins.ipa.answer.userdir %>
+ipa_serverip: <%= node.answer.ipa_serverip %>
+ipa_servername: <%= node.answer.ipa_servername %>
+ipa_insecurepassword: <%= node.answer.ipa_insecurepassword %>
+ipa_userdir: <%= node.answer.userdir %>

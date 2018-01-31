@@ -1,6 +1,6 @@
 files:
   setup:
     - /var/lib/metalware/plugins/rootrun/files/15-rootrun.sh
-rootrun_scriptdir: <%= node.plugins.rootrun.answer.rootrun_scriptdir %>
-rootrun_userlogdir: <%= node.plugins.rootrun.answer.rootrun_userlogdir %>
-rootrun_adminlogdir: <%= node.plugins.rootrun.answer.rootrun_adminlogdir %>
+rootrun_scriptdir: <%= node.answer.rootrun_scriptdir %>
+rootrun_userlogdir: <%= node.answer.rootrun_userlogdir %>
+rootrun_adminlogdir: <%= node.answer.rootrun_adminlogdir %>

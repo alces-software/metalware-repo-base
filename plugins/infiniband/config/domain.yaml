@@ -3,5 +3,5 @@ files:
     - /var/lib/metalware/plugins/infiniband/files/06-infiniband.sh
 networks:
   ib:
-    ib_use_installer: <%= node.plugins.infiniband.answer.ib_use_installer %>
-    mellanoxinstaller: <%= node.plugins.infiniband.answer.mellanoxinstaller %>
+    ib_use_installer: <%= node.answer.ib_use_installer %>
+    mellanoxinstaller: <%= node.answer.mellanoxinstaller %>

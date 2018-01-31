@@ -1,6 +1,6 @@
 files:
   setup:
     - /var/lib/metalware/plugins/slurm/06-slurm.sh
-slurm_servername: <%= node.plugins.slurm.answer.slurm_servername %>
-slurm_isserver: <%= node.plugins.slurm.answer.slurm_isserver %>
-slurm_mungekey: <%= node.plugins.slurm.answer.slurm_mungekey %>
+slurm_servername: <%= node.answer.slurm_servername %>
+slurm_isserver: <%= node.answer.slurm_isserver %>
+slurm_mungekey: <%= node.answer.slurm_mungekey %>

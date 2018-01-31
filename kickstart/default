@@ -24,7 +24,7 @@ lang en_GB
 timezone  Europe/London
 
 #REPOS
-url --url=<%= if plugins.yumrepo.build_url != nil then plugins.yumrepo.build_url else 'http:// mirror.ox.ac.uk/sites/mirror.centos.org/7/os/x86_64/' end %>
+url --url=<%= if node.plugins.yumrepo.config.yumrepo_buildurl != nil then node.plugins.yumrepo.config.yumrepo_buildurl else 'http://mirror.ox.ac.uk/sites/mirror.centos.org/7/os/x86_64/' end %>
 
 #DISK
 %include /tmp/disk.part

@@ -13,11 +13,6 @@ questions:
     question: 'Upstream URL for nodes to build from'
     default: 'http://mirror.ox.ac.uk/sites/mirror.centos.org/7/os/x86_64/'
 
-  - &yumrepo_sourcerepos
-    identifier: yumrepo_sourcerepos
-    question: 'Repoman source repo filenames'
-    default: 'base.upstream'
-
   - &yumrepo_useclientrepofile
     identifier: yumrepo_useclientrepofile
     question: 'Define an upstream repofile for nodes to use locally?'
@@ -29,20 +24,20 @@ questions:
 
 domain:
   - *yumrepo_isserver
-  - *yumrepo_sourcerepos
+  - *yumrepo_buildurl
   - *yumrepo_useclientrepofile
 
 group:
   - *yumrepo_isserver
-  - *yumrepo_sourcerepos
+  - *yumrepo_buildurl
   - *yumrepo_useclientrepofile
 
 node:
   - *yumrepo_isserver
-  - *yumrepo_sourcerepos
+  - *yumrepo_buildurl
   - *yumrepo_useclientrepofile
 
 local:
   - *yumrepo_isserver
-  - *yumrepo_sourcerepos
+  - *yumrepo_buildurl
   - *yumrepo_useclientrepofile
