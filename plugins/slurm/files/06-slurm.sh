@@ -27,7 +27,7 @@ SlurmctldLogFile=/var/log/slurm/slurmctld.log
 SlurmdDebug=3
 SlurmdLogFile=/var/log/slurm/slurmd.log
 JobCompType=jobcomp/none
-NodeName=<% genders.domain.each do |node| %><%= node %>,<% end %> State=UNKNOWN
+NodeName=<% nodes.each do |node| %><%= node.name %>,<% end %> State=UNKNOWN
 PartitionName=all Nodes=ALL Default=YES MaxTime=UNLIMITED
 EOF
 `
