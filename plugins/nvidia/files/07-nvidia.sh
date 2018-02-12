@@ -9,7 +9,8 @@ yum -y groupinstall "Development Tools"
 
 mkdir -p /var/lib/firstrun/scripts/
 cat << EOF > /var/lib/firstrun/scripts/nvidia.bash
+yum -y install kernel-devel
 URL=http://<%= domain.hostip %>/installers/
 curl \$URL/nvidia.run > /tmp/nvidia.run
-sh /tmp/nvidia.run -a -q -s --kernel-source-path /usr/src/kernels/*
+sh /tmp/nvidia.run -a -q -s
 EOF
