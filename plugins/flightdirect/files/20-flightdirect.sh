@@ -60,6 +60,7 @@ rm -rf /opt/clusterware
 export cw_FLIGHT_quiet=true
 mkdir -p /etc/xdg/flight
 cp /tmp/config.yml /etc/xdg/flight/.
+chmod +x /tmp/flight-install
 /tmp/flight-install initialize
 /opt/clusterware/opt/flight-configuration-tool/bin/flight-configure apply
 EOF
