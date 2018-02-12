@@ -1,10 +1,10 @@
 files:
   scripts:
     - /var/lib/metalware/plugins/flightcenter/files/20-flightcenter.sh
-fligthcenter_archivedir: '<%= node.answer.flightcenter_archivedir %>'
-fligthcenter_sharedscratchdir: '<%= node.answer.flightcenter_sharedscratchdir %>'
-fligthcenter_localscratchdir: '<%= node.answer.flightcenter_localscratchdir %>'
+flightcenter_archivedir: '<%= node.answer.flightcenter_archivedir %>'
+flightcenter_sharedscratchdir: '<%= node.answer.flightcenter_sharedscratchdir %>'
+flightcenter_localscratchdir: '<%= node.answer.flightcenter_localscratchdir %>'
 # mailserver: flightcenter-mail.flightcenter.alces-flight.com
-fligthcenter_mailserver: 10.78.0.15
+flightcenter_mailserver: 10.78.0.15
 # ntpserver: flightcenter-mail.flightcenter.alces-flight.com
-fligthcenter_ntpserver: 10.78.0.15
+flightcenter_ntpserver: 10.78.0.15
