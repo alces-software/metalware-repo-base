@@ -1,3 +1,4 @@
+priority: 20
 files:
   setup:
     - /var/lib/metalware/plugins/flightdirect/files/20-flightdirect.sh

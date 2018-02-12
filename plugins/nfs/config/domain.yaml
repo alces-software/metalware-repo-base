@@ -1,3 +1,4 @@
+priority: 1
 files:
   scripts:
     - /var/lib/metalware/plugins/nfs/files/01-nfs.sh

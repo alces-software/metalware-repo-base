@@ -1,3 +1,4 @@
+priority: 2
 files:
   scripts:
     - /var/lib/metalware/plugins/ipa/files/02-ipa.sh

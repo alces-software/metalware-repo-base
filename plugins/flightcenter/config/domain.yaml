@@ -1,3 +1,4 @@
+priority: 20
 files:
   scripts:
     - /var/lib/metalware/plugins/flightcenter/files/20-flightcenter.sh

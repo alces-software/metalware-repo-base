@@ -1,3 +1,4 @@
+priority: 3
 files:
   scripts:
     - /var/lib/metalware/plugins/ganglia/files/03-ganglia.sh

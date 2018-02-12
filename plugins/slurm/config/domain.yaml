@@ -1,3 +1,4 @@
+priority: 6
 files:
   setup:
     - /var/lib/metalware/plugins/slurm/files/06-slurm.sh

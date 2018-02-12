@@ -1,3 +1,4 @@
+priority: 0
 files:
   setup:
     - /var/lib/metalware/plugins/yumrepo/files/00-repos.sh

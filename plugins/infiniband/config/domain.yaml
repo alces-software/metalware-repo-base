@@ -1,3 +1,4 @@
+priority: 6
 files:
   setup:
     - /var/lib/metalware/plugins/infiniband/files/06-infiniband.sh
