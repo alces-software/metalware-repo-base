@@ -1,3 +1,13 @@
+<%
+# Sort plugins by `priority` config value, with plugins with a lower value for
+# `priority` appearing first.  Plugins without `priority` set will default to a
+# priority of 9999, i.e. will probably be last unless a plugin has a priority
+# explicitly set to more than this.
+default_priority = 9999
+prioritized_plugins = node.plugins.sort_by do |plugin|
+  plugin.config.priority || default_priority
+end
+%>
 echo "Running main.sh on <%= node.name %> at $(date)!"
 
 
@@ -33,15 +43,16 @@ if [ $(ls $CORE_DIR/../setup |wc -l) != 0 ] ; then
   done
 fi
 
-echo 'Running plugin setup scripts'
-for plugin in $CORE_DIR/../../plugin/* ; do
-  echo "Running setup scripts for $plugin"
-  if [ $(ls $plugin/setup |wc -l) != 0 ] ; then
-    for script in $plugin/setup/* ; do
-        bash $script
-    done
-  fi
-done
+<% prioritized_plugins.each do |plugin| %>
+echo 'Running setup scripts for plugin `<%= plugin.name %>`:'
+  <% (plugin.files.setup || []).each do |script| %>
+    <% if script.error %>
+echo '<%= script.name %>: <%= script.error %>'
+    <% else %>
+bash "<%= script.rendered_path %>"
+    <% end %>
+  <% end %>
+<% end %>
 
 echo 'Running core setup scripts:'
 run_script base
@@ -54,12 +65,13 @@ if [ $(ls $CORE_DIR/../scripts |wc -l) != 0 ] ; then
   done
 fi
 
-echo 'Running plugin scripts'
-for plugin in $CORE_DIR/../../plugin/* ; do
-  echo "Running scripts for $plugin"
-  if [ $(ls $plugin/scripts |wc -l) != 0 ] ; then
-    for script in $plugin/scripts/* ; do
-        bash $script
-    done
-  fi
-done
+<% prioritized_plugins.each do |plugin| %>
+echo 'Running scripts for plugin `<%= plugin.name %>`:'
+  <% (plugin.files.scripts || []).each do |script| %>
+    <% if script.error %>
+echo '<%= script.name %>: <%= script.error %>'
+    <% else %>
+bash "<%= script.rendered_path %>"
+    <% end %>
+  <% end %>
+<% end %>
