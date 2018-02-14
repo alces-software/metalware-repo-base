@@ -1,7 +1,7 @@
 priority: 1
 files:
   scripts:
-    - /var/lib/metalware/plugins/nfs/files/01-nfs.sh
+    - /var/lib/metalware/plugins/nfs/files/nfs.sh
 nfs_isserver: <%= node.answer.nfs_isserver %>
 nfs_exports:
   /export/users:
