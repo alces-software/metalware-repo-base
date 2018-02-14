@@ -16,9 +16,9 @@ done
 # Generate repo config
 mkdir -p /opt/alces/repo/
 #
-# XXX Don't actually mirror servers - this should be done manually
+# XXX Don't actually mirror servers - this should be done manually - generate client repofile instead
 #
-#/opt/repoman/repoman.rb generate --distro centos7 --include <%= node.plugins.yumrepo.config.yumrepo_sourcerepos %> --outfile /opt/alces/repo/client.repo
+/opt/repoman/repoman.rb generate --distro centos7 --include <%= node.plugins.yumrepo.config.yumrepo_sourcerepos %> --outfile /opt/alces/repo/client.repo
 
 # HTTP setup
 cat << EOF > /etc/httpd/conf.d/repo.conf
