@@ -1,8 +1,3 @@
-#!/bin/bash
-#(c)2017 Alces Software Ltd. HPC Consulting Build Suite
-#Job ID: <%= domain.config.jobid %>
-#Cluster: <%= domain.config.cluster %>
-
 mkdir -p /var/lib/firstrun/{bin,scripts}
 mkdir -p /var/log/firstrun/
 
