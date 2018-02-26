@@ -1,3 +1,4 @@
+yum -y install kernel-devel
 <% if (node.plugins.lustre.config.lustre_isserver rescue false) -%>
 yum -y --enablerepo lustre-el7-server --enablerepo e2fsprogs-el7 update
 yum -y --enablerepo lustre-el7-server --enablerepo e2fsprogs-el7 install lustre kmod-lustre-osd-ldiskfs
