@@ -10,7 +10,7 @@ EOF
 
 <% elsif (node.plugins.lustre.config.lustre_isclient rescue false) -%>
 
-yum -y --enablerepo lustre-el7-server --enablerepo e2fsprogs-el7 install lustre-client
+yum -y --enablerepo lustre-el7-server install lustre-client
 
 cat << EOF > /etc/modprobe.d/lustre.conf
 options lnet networks=<%= node.plugins.lustre.config.lustre_networks %>
