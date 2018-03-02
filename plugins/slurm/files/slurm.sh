@@ -33,10 +33,10 @@ EOF
 `
 
 yum -y -e0 install munge munge-devel munge-libs perl-Switch
-yum -y -e 0 --nogpgcheck install slurm slurm-devel slurm-perlapi slurm-torque slurm-slurmd slurm-example-configs
+yum --enablerepo alces -y -e 0 --nogpgcheck install slurm slurm-devel slurm-perlapi slurm-torque slurm-slurmd slurm-example-configs
 <% if (node.plugins.slurm.config.slurm_isserver rescue false) -%>
 yum -y -e0 install mariadb mariadb-test mariadb-libs mariadb-embedded mariadb-embedded-devel mariadb-devel mariadb-bench
-yum -y --nogpgcheck install slurm-slurmctld
+yum --enablerepo alces -y --nogpgcheck install slurm-slurmctld
 systemctl enable mariadb
 systemctl start mariadb
 <% end -%>
