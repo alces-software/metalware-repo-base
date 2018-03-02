@@ -19,7 +19,8 @@ EOF`
 
 echo "$EXPORTS" > /etc/exports
 
-<% elsif (!node.plugins.nis.config.nis_isserver rescue true) -%>
+<% end -%>
+<% if (!node.plugins.nis.config.nis_isserver rescue true) -%>
 
 MOUNTS=`cat << EOF
 <% node.plugins.nfs.config.nfs_mounts.each do | mount, path | -%>
