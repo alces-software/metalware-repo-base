@@ -18,6 +18,12 @@ cat << EOF > /etc/modprobe.d/lustre.conf
 options lnet networks=<%= node.plugins.lustre.config.lustre_networks %>
 EOF
 
-echo "<%= node.plugins.lustre.config.lustre_mountentry %>" >> /etc/fstab
+MOUNTS=`cat << EOF
+<% node.plugins.lustre.config.lustre_mounts.each do | mount, path | -%>
+<%= path.server %>:<%= path.export %>    <%= mount %>    lustre    <%= if defined?(path.options) then path.options else 'defaults,_netdev' end -%>    0 0
+<% end -%>
+EOF`
+
+echo "$MOUNTS" >> /etc/fstab
 
 <% end -%>

@@ -8,10 +8,6 @@ questions:
     identifier: lustre_isclient
     question: 'Is a Lustre client?'
     type: 'boolean'
-    dependent:
-      - identifier: lustre_mountentry
-        question: 'Lustre mount entry for /etc/fstab'
-        default: 'mds_server:/lustre    /mnt/lustre    lustre    default,_netdev    0 0'
 
   - &lustre_networks
     identifier: lustre_networks
