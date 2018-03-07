@@ -56,7 +56,7 @@ echo "$SLURMCONF" > /etc/slurm/slurm.conf
 <% if (node.plugins.slurm.config.slurm_isserver rescue false) -%>
 systemctl enable slurmctld
 systemctl start slurmctld
-<% end -%>
-
+<% else -%>
 systemctl enable slurmd
 systemctl start slurmd
+<% end -%>
