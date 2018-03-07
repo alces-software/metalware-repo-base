@@ -12,23 +12,26 @@ question:
     identifier: slurm_mungekey
     question: 'Munge auth key'
 
+  - &slurm_nodelist
+    identifier: slurm_nodelist
+    question: 'List of compute nodes to be available on the queue'
+    default: '<% nodes.each do |node| %><%= node.name %>,<% end %>'
+
 domain:
   - *slurm_isserver
   - *slurm_servername
   - *slurm_mungekey
+  - *slurm_nodelist
 
 group:
   - *slurm_isserver
   - *slurm_servername
-  - *slurm_mungekey
 
 node:
   - *slurm_isserver
   - *slurm_servername
-  - *slurm_mungekey
 
 local:
   - *slurm_isserver
   - *slurm_servername
-  - *slurm_mungekey
 

@@ -5,3 +5,4 @@ files:
 slurm_servername: <%= node.answer.slurm_servername %>
 slurm_isserver: <%= node.answer.slurm_isserver %>
 slurm_mungekey: <%= node.answer.slurm_mungekey %>
+slurm_nodelist: <%= node.answer.slurm_nodelist %>
