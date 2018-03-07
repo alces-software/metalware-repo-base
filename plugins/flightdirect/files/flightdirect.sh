@@ -1,4 +1,4 @@
-wget -O /tmp/flight-install https://s3-eu-west-1.amazonaws.com/alces-flight/FlightDirect/1.0.2/flight-install
+wget -O /tmp/flight-install <%= node.plugins.flightdirect.config.flightdirect_sourceurl %>
 
 <% if node.plugins.flightdirect.config.flightdirect_isclient -%>
 cat << EOF > /tmp/config.yml
