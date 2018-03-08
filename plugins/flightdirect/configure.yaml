@@ -12,7 +12,7 @@ questions:
   - &flightdirect_sourceurl
     identifier: flightdirect_sourceurl
     question: 'URL for downloading Flight Direct installer (recommended to be somewhere local to the controller)'
-    default: 'https://s3-eu-west-1.amazonaws.com/alces-flight/FlightDirect/1.0.2/flight-install'
+    default: 'https://s3-eu-west-1.amazonaws.com/alces-flight/FlightDirect/1.0.3/flight-install'
 
 domain:
   - *flightdirect_isserver
