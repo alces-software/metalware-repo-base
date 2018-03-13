@@ -1,8 +1,3 @@
-#!/bin/bash
-#(c)2017 Alces Software Ltd. HPC Consulting Build Suite
-#Job ID: <%= domain.config.jobid %>
-#Cluster: <%= domain.config.cluster %>
-
 mkdir -p /var/lib/firstrun/{bin,scripts}
 mkdir -p /var/log/firstrun/
 
@@ -48,6 +43,8 @@ ExecStartPost=/bin/bash /var/lib/firstrun/bin/firstrun-stop
 SysVStartPriority=99
 TimeoutSec=0
 RemainAfterExit=yes
+Environment=HOME=/root
+Environment=USER=root
 [Install]
 WantedBy=multi-user.target
 EOF

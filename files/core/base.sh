@@ -20,7 +20,6 @@ install_file authorized_keys /root/.ssh/authorized_keys
 chmod 600 /root/.ssh/authorized_keys
 echo "StrictHostKeyChecking no" >> /root/.ssh/config
 
-run_script firstrun
 run_script chrony
 run_script syslog
 run_script postfix

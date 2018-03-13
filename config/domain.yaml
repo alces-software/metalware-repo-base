@@ -9,7 +9,7 @@ ssh_key: '<%= answer.root_ssh_key %>'
 
 # Generic networking properties.
 domain: <%= answer.domain %>
-search_domains: "<% config.networks.each do |network, details| -%><%= details.domain %><%= if network.to_s == 'bmc' then '.mgt' else '' end %>.<%= config.domain %> <% end -%>"
+search_domains: "<% config.networks.each do |network, details| -%><% next if network.to_s == 'ext' %><%= details.domain %><%= if network.to_s == 'bmc' then '.mgt' else '' end %>.<%= config.domain %> <% end -%><%= config.domain %>"
 dns_type: "<%= answer.dns_type %>"
 externaldns: <%= answer.externaldns %>
 internaldns: <%= answer.internaldns %>
@@ -30,7 +30,7 @@ networks:
     gateway: "<%= answer.pri_network_gateway %>"
     primary: true
     named_fwd_zone: "<%= config.networks.pri.domain %>.<%= config.domain %>"
-    named_rev_zone: <% split_net = answer.pri_network_network.split(/\./) -%><%= split_net[1] %>.<%= split_net[0] %>
+    named_rev_zone: <% split_net = config.networks.pri.network.split(/\./) -%><%= split_net[1] %>.<%= split_net[0] %>
     firewallpolicy: trusted
 
   mgt:
@@ -44,7 +44,7 @@ networks:
     network: "<%= answer.mgt_network_network %>"
     gateway:
     named_fwd_zone: "<%= config.networks.mgt.domain %>.<%= config.domain %>"
-    named_rev_zone: <% split_net = answer.mgt_network_network.split(/\./) -%><%= split_net[1] %>.<%= split_net[0] %>
+    named_rev_zone: <% split_net = config.networks.mgt.network.split(/\./) -%><%= split_net[1] %>.<%= split_net[0] %>
     firewallpolicy: trusted
 
   ib:
@@ -58,7 +58,7 @@ networks:
     network: "<%= answer.ib_network_network %>"
     gateway:
     named_fwd_zone: "<%= config.networks.ib.domain %>.<%= config.domain %>"
-    named_rev_zone: <% split_net = answer.ib_network_network.split(/\./) -%><%= split_net[1] %>.<%= split_net[0] %>
+    named_rev_zone: <% split_net = config.networks.ib.network.split(/\./) -%><%= split_net[1] %>.<%= split_net[0] %>
     firewallpolicy: trusted
 
   bmc:
@@ -81,7 +81,7 @@ disklabel: 'sda'
 disksetup: |
   zerombr
   bootloader --location=mbr --driveorder=<%= config.disklabel %> --append="$bootloaderappend"
-  clearpart --all --initlabel
+  clearpart --drives=<%= config.disklabel %> --initlabel
 
   #Disk partitioning information
   part /boot --fstype ext4 --size=4096 --asprimary --ondisk <%= config.disklabel %>
@@ -97,7 +97,7 @@ disksetup: |
 #  zerombr
 #
 #  bootloader --location=mbr --driveorder=<%= config.disklabel %> --append="$bootloaderappend"
-#  clearpart --all --initlabel
+#  clearpart --drives=<%= config.disklabel %>,<%= config.disklabel2 %> --initlabel
 #
 #  #Disk partitioning information
 #  part /boot --fstype ext4 --size=1024 --asprimary --ondisk <%= config.disklabel %>
@@ -130,7 +130,6 @@ files:
     - local-script.sh
   core:
     - core/base.sh
-    - core/firstrun.sh
     - core/chrony.sh
     - core/syslog.sh
     - core/postfix.sh
@@ -159,15 +158,10 @@ firewall:
   management:
     services: 'ssh snmp'
 
-yumrepo:
-  # Repostiroy URL for kickstart builds 
-  build_url: http://mirror.ox.ac.uk/sites/mirror.centos.org/7/os/x86_64/
-  # If true, this server will host a client config file for the network
-  is_server: false
-  # Repoman source files for repository mirror server to use (comma separate)
-  source_repos: base.upstream
-  # The file for clients to curl containing repository information [OPTIONAL]
-  # clientrepofile: http://myrepo.com/repo/client.repo
-  clientrepofile: false
 postfix:
   relayhost: "<%= answer.postfix_relay %>"
+
+is_vm: '<%= answer.is_vm %>'
+libvirt_host: '<%= answer.libvirt_host %>'
+vm_disk_pool: '<%= answer.vm_disk_pool %>'
+vm_mac_address_build: '<%= answer.vm_mac_address_build %>'

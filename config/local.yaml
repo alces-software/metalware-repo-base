@@ -38,7 +38,6 @@ files:
     - setup/main.sh
   core:
     - core/base.sh
-    - core/firstrun.sh
     - core/chrony.sh
     - core/syslog.sh
     - core/postfix.sh

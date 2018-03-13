@@ -37,14 +37,6 @@ questions:
     identifier: genders_host_range
     question: "Genders host range specifier for this group, e.g. 'node01,node[05-08]'"
 
-  - &genders_host_type
-    identifier: genders_host_type
-    question: 'What type of machines are in this group?'
-    default: 'physical'
-    choices:
-      - 'physical'
-      - 'virtual'
-
   - &genders_host_role
     identifier: genders_host_role
     question: 'What are the roles of machines in the group?'
@@ -252,6 +244,49 @@ questions:
     question: 'Hostname for node EXT'
     default: 'controller.<%= config.networks.ext.domain %>'
 
+  # VM questions
+  - &is_vm
+    identifier: is_vm
+    question: 'Indicate whether a node or group is a VM'
+    type: 'boolean'
+
+  - &libvirt_host
+    identifier: libvirt_host
+    question: 'Enter the IP or hostname of the Libvirt host'
+
+  - &vm_memory
+    identifier: vm_memory
+    question: 'Amount of memory to allocate to a VM in GiB'
+    type: 'integer'
+    default: 4
+
+  - &vm_cpus
+    identifier: vm_cpus
+    question: 'Number of CPU cores to allocate to a VM'
+    type: 'integer'
+    default: 1
+
+  - &vm_root_disk_size
+    identifier: vm_root_disk_size
+    question: 'Size of the VM root disk to allocate in GB'
+    type: 'integer'
+    default: 8
+
+  - &vm_disk_pool
+    identifier: vm_disk_pool
+    question: 'Specify the Libvirt disk pool name'
+    default: 'vm'
+
+  - &vm_disk_pool_path
+    identifier: vm_disk_pool_path
+    question: 'Specify the Libvirt disk pool path'
+    default: '/opt/vm'
+
+  - &vm_mac_address_build
+    identifier: vm_mac_address_build
+    question: 'Build network interface MAC address'
+    default: '00:<%= (1..5).map{"%0.2X"%rand(256)}.join(":") %>'
+
 domain:
   - *cluster_name
   - *domain
@@ -287,7 +322,6 @@ domain:
 
 group:
   - *genders_host_range
-  - *genders_host_type
   - *genders_host_role
   - *genders_all_group
   - *genders_additional_groups
@@ -295,24 +329,36 @@ group:
   - *kickstart_template
   - *pxelinux_template
 
-  - *pri_network_defined
-  - *pri_network_ip
-  - *pri_network_gateway
-  - *pri_network_interface
+  - <<: *pri_network_defined
+    dependent:
+    - *pri_network_ip
+    - *pri_network_gateway
+    - *pri_network_interface
 
-  - *mgt_network_defined
-  - *mgt_network_ip
-  - *mgt_network_interface
+  - <<: *mgt_network_defined
+    dependent:
+    - *mgt_network_ip
+    - *mgt_network_interface
 
-  - *bmc_network_defined
-  - *bmc_network_ip
-  - *bmc_password
-  - *bmc_network_vlan
+  - <<: *bmc_network_defined
+    dependent:
+    - *bmc_network_ip
+    - *bmc_password
+    - *bmc_network_vlan
 
-  - *ib_network_defined
-  - *ib_network_ip
-  - *ib_network_interface
+  - <<: *ib_network_defined
+    dependent:
+    - *ib_network_ip
+    - *ib_network_interface
 
+  - <<: *is_vm
+    dependent:
+    - *libvirt_host
+    - *vm_memory
+    - *vm_cpus
+    - *vm_root_disk_size
+    - *vm_disk_pool
+    - *vm_disk_pool_path
 
 node:
   - *root_password
@@ -320,48 +366,67 @@ node:
   - *kickstart_template
   - *pxelinux_template
 
-  - *pri_network_defined
-  - *pri_network_ip
-  - *pri_network_interface
+  - <<: *pri_network_defined
+    dependent:
+    - *pri_network_ip
+    - *pri_network_interface
 
-  - *mgt_network_defined
-  - *mgt_network_ip
-  - *mgt_network_interface
+  - <<: *mgt_network_defined
+    dependent:
+    - *mgt_network_ip
+    - *mgt_network_interface
 
-  - *bmc_network_defined
-  - *bmc_network_ip
-  - *bmc_password
-  - *bmc_network_vlan
+  - <<: *bmc_network_defined
+    dependent:
+    - *bmc_network_ip
+    - *bmc_password
+    - *bmc_network_vlan
 
-  - *ib_network_defined
-  - *ib_network_ip
-  - *ib_network_interface
+  - <<: *ib_network_defined
+    dependent:
+    - *ib_network_ip
+    - *ib_network_interface
+
+  - <<: *is_vm
+    dependent:
+    - *libvirt_host
+    - *vm_memory
+    - *vm_cpus
+    - *vm_root_disk_size
+    - *vm_disk_pool
+    - *vm_disk_pool_path
+    - *vm_mac_address_build
 
 local:
-  - *pri_network_defined
-  - *pri_network_ip
-  - *pri_network_interface
-  - *pri_network_short_hostname
+  - <<: *pri_network_defined
+    dependent:
+    - *pri_network_ip
+    - *pri_network_interface
+    - *pri_network_short_hostname
 
-  - *mgt_network_defined
-  - *mgt_network_ip
-  - *mgt_network_interface
-  - *mgt_network_short_hostname
+  - <<: *mgt_network_defined
+    dependent:
+    - *mgt_network_ip
+    - *mgt_network_interface
+    - *mgt_network_short_hostname
 
-  - *bmc_network_defined
-  - *bmc_network_ip
-  - *bmc_password
+  - <<: *bmc_network_defined
+    dependent:
+    - *bmc_network_ip
+    - *bmc_password
 
-  - *ib_network_defined
-  - *ib_network_ip
-  - *ib_network_interface
-  - *ib_network_short_hostname
+  - <<: *ib_network_defined
+    dependent:
+    - *ib_network_ip
+    - *ib_network_interface
+    - *ib_network_short_hostname
 
-  - *ext_network_defined
-  - *ext_network_domain
-  - *ext_network_ip
-  - *ext_network_network
-  - *ext_network_netmask
-  - *ext_network_interface
-  - *ext_network_gateway
-  - *ext_network_short_hostname
+  - <<: *ext_network_defined
+    dependent:
+    - *ext_network_domain
+    - *ext_network_ip
+    - *ext_network_network
+    - *ext_network_netmask
+    - *ext_network_interface
+    - *ext_network_gateway
+    - *ext_network_short_hostname

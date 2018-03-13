@@ -1,0 +1,35 @@
+questions:
+  - &flightdirect_isserver
+    identifier: flightdirect_isserver
+    question: 'Is a login node?'
+    type: 'boolean'
+
+  - &flightdirect_isclient
+    identifier: flightdirect_isclient
+    question: 'Is a compute node?'
+    type: 'boolean'
+
+  - &flightdirect_sourceurl
+    identifier: flightdirect_sourceurl
+    question: 'URL for downloading Flight Direct installer (recommended to be somewhere local to the controller)'
+    default: 'https://s3-eu-west-1.amazonaws.com/alces-flight/FlightDirect/1.0.4/flight-install'
+
+domain:
+  - *flightdirect_isserver
+  - *flightdirect_isclient
+  - *flightdirect_sourceurl
+
+group:
+  - *flightdirect_isserver
+  - *flightdirect_isclient
+  - *flightdirect_sourceurl
+
+node:
+  - *flightdirect_isserver
+  - *flightdirect_isclient
+  - *flightdirect_sourceurl
+
+local:
+  - *flightdirect_isserver
+  - *flightdirect_isclient
+  - *flightdirect_sourceurl
