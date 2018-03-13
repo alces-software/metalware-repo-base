@@ -34,6 +34,11 @@ EOF
 
 fi
 
+# MLX5
+if (lsmod |grep -q mlx5_core) ; then
+  yum $YUM_COMMON
+fi
+
 # Qlogic Infiniband
 if (lsmod |grep -q ib_qib) ; then
     # Install additional IB packages
