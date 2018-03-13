@@ -1,3 +1,21 @@
+### LOCALISED INSTALL NOTES ###
+#
+## Create flightdirect export on controller
+#mkdir -p /opt/alces/installers/flightdirect
+#cd /opt/alces/installers/flightdirect
+#
+## Download flight-install and flight-configure (change 1.0.4 to latest version)
+#wget https://s3-eu-west-1.amazonaws.com/alces-flight/FlightDirect/1.0.4/flight-install
+#wget https://s3-eu-west-1.amazonaws.com/alces-flight/FlightDirect/1.0.4/flight-configure
+#
+## Download the clusterware installer
+#
+## Clone the S3 dist bucket
+#
+## Do some wizardry with clusterware-services to create a tarball
+#
+### END ###
+
 wget -O /tmp/flight-install <%= node.plugins.flightdirect.config.flightdirect_sourceurl %>
 
 <% if node.plugins.flightdirect.config.flightdirect_isclient -%>
