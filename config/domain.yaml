@@ -79,9 +79,9 @@ networks:
 
 disklabel: 'sda'
 disksetup: |
+  clearpart --all --initlabel
   zerombr
   bootloader --location=mbr --driveorder=<%= config.disklabel %> --append="$bootloaderappend"
-  clearpart --drives=<%= config.disklabel %> --initlabel
 
   #Disk partitioning information
   part /boot --fstype ext4 --size=4096 --asprimary --ondisk <%= config.disklabel %>
@@ -94,10 +94,10 @@ disksetup: |
 
 #disklabel2: 'sdb'
 #disksetup: |
+#  clearpart --all --initlabel
 #  zerombr
 #
 #  bootloader --location=mbr --driveorder=<%= config.disklabel %> --append="$bootloaderappend"
-#  clearpart --drives=<%= config.disklabel %>,<%= config.disklabel2 %> --initlabel
 #
 #  #Disk partitioning information
 #  part /boot --fstype ext4 --size=1024 --asprimary --ondisk <%= config.disklabel %>
