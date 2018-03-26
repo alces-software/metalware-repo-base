@@ -31,7 +31,6 @@ url --url=<%= if node.plugins.yumrepo.config.yumrepo_buildurl != nil then node.p
 
 #PRESCRIPT
 %pre
-curl '<%= node.build_complete_url %>&event=stage1&msg=Formatting%20disk'
 set -x -v
 exec 1>/tmp/ks-pre.log 2>&1
 
@@ -40,7 +39,17 @@ bootloaderappend="<%= config.kernelappendoptions %>"
 cat > $DISKFILE << EOF
 <%= config.disksetup %>
 EOF
+curl '<%= node.build_complete_url %>&event=stage1&msg=Formatting%20disk'
+%end
+
+#PRE-INSTALL (after disk format, before package install)
+%pre-install
 curl '<%= node.build_complete_url %>&event=stage2&msg=Installing%20packages'
+%end
+
+#ERROR HANDLING
+%onerror
+curl '<%= node.build_complete_url %>&event=ERROR&msg=Installation%20Failed'
 %end
 
 #PACKAGES
