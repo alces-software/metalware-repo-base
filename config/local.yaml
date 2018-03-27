@@ -30,12 +30,12 @@ networks:
 build_method: self
 files:
   setup:
-    - setup/dns.sh
-    - setup/xinetd.sh
-    - setup/dhcp.sh
-    - setup/http.sh
+    - local/dns.sh
+    - local/xinetd.sh
+    - local/dhcp.sh
+    - local/http.sh
   main:
-    - setup/main.sh
+    - local/main.sh
   core:
     - core/base.sh
     - core/chrony.sh
@@ -46,6 +46,7 @@ files:
     - core/network-join.sh
     - core/networking.sh
     - core/configs/authorized_keys
+    - local/extra.sh
 build:
   pxeboot_path: /var/lib/tftpboot/boot
 ntp:

@@ -57,6 +57,7 @@ bash "<%= script.rendered_path %>"
 echo 'Running core setup scripts:'
 run_script base
 run_script networking
+run_script extra
 
 echo 'Running user scripts:'
 if [ $(ls $CORE_DIR/../scripts |wc -l) != 0 ] ; then
