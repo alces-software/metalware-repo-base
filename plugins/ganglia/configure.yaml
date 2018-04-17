@@ -3,6 +3,7 @@ questions:
     identifier: ganglia_isserver
     question: 'Is a Ganglia server?'
     type: 'boolean'
+    default: false
 
   - &ganglia_serverip
     identifier: ganglia_serverip

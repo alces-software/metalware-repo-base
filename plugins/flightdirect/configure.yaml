@@ -3,6 +3,7 @@ questions:
     identifier: flightdirect_isserver
     question: 'Is a login node?'
     type: 'boolean'
+    default: false
 
   - &flightdirect_isclient
     identifier: flightdirect_isclient
@@ -15,7 +16,6 @@ questions:
     default: 'https://s3-eu-west-1.amazonaws.com/alces-flight/FlightDirect/1.0.4/flight-install'
 
 domain:
-  - *flightdirect_isserver
   - *flightdirect_isclient
   - *flightdirect_sourceurl
 

@@ -3,6 +3,7 @@ questions:
     identifier: yumrepo_isserver
     question: 'Is a repo server?'
     type: 'boolean'
+    default: false
     dependent:
       - identifier: yumrepo_sourcerepos
         question: 'Repoman source repo filenames'
@@ -23,7 +24,6 @@ questions:
         default: 'http://10.10.0.1/repo/client.repo'
 
 domain:
-  - *yumrepo_isserver
   - *yumrepo_buildurl
   - *yumrepo_useclientrepofile
 

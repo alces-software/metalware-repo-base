@@ -3,6 +3,7 @@ questions:
     identifier: lustre_isserver
     question: 'Is a Lustre server?'
     type: 'boolean'
+    default: false
 
   - &lustre_isclient
     identifier: lustre_isclient

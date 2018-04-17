@@ -3,6 +3,7 @@ questions:
     identifier: nfs_isserver
     question: 'Is an NFS server?'
     type: 'boolean'
+    default: false
         
   - &nfs_isclient
     identifier: nfs_isclient

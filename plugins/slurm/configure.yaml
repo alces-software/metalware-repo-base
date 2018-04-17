@@ -3,6 +3,7 @@ question:
     identifier: slurm_isserver
     question: 'Is this the SLURM controller?'
     type: 'boolean'
+    default: false
 
   - &slurm_servername
     identifier: slurm_servername
@@ -18,7 +19,6 @@ question:
     default: '<% nodes.each do |node| %><%= node.name %>,<% end %>'
 
 domain:
-  - *slurm_isserver
   - *slurm_servername
   - *slurm_mungekey
   - *slurm_nodelist
