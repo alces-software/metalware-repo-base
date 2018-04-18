@@ -40,7 +40,7 @@
     <% if node.config.networks.pri.defined -%>
     <interface type='bridge'>
       <mac address='<%= node.answer.vm_mac_address_build %>'/>
-      <source bridge='pri'/>
+      <source bridge='<%= config.networks.pri.domain %>'/>
       <target dev='vnet10'/>
       <model type='virtio'/>
       <alias name='net0'/>
@@ -49,7 +49,7 @@
     <% end -%>
     <% if node.config.networks.mgt.defined -%>
     <interface type='bridge'>
-      <source bridge='mgt'/>
+        <source bridge='<%= config.networks.mgt.domain %>'/>
       <target dev='vnet11'/>
       <model type='virtio'/>
       <alias name='net0'/>
