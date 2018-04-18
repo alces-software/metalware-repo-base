@@ -86,6 +86,11 @@ questions:
     question: 'IP for nodes on the primary network'
     default: '10.10.<%= node.group.index %>.<%= node.index %>'
 
+  - &pri_network_ip_node
+    identifier: pri_network_ip_node
+    question: 'IP address for the node (primary network)'
+    default: '10.10.0.1'
+
   - &pri_network_netmask
     identifier: pri_network_netmask
     question: 'Netmask for the primary network'
@@ -127,6 +132,11 @@ questions:
     question: 'IP for nodes on the management network'
     default: '10.11.<%= node.group.index.to_i + 100 %>.<%= node.index %>'
 
+  - &mgt_network_ip_node
+    identifier: mgt_network_ip_node
+    question: 'IP address for the node (management network)'
+    default: '10.11.100.1'
+
   - &mgt_network_netmask
     identifier: mgt_network_netmask
     question: 'Netmask for the management network'
@@ -158,6 +168,11 @@ questions:
     question: 'IP for nodes on the bmc network'
     default: '10.11.<%= node.group.index %>.<%= node.index %>'
 
+  - &bmc_network_ip_node
+    identifier: bmc_network_ip_node
+    question: 'IP for the node (bmc network)'
+    default: '10.11.0.1'
+
   - &bmc_network_vlan
     identifier: bmc_network_vlan
     question: 'BMC network VLAN channel ID (if applicable)'
@@ -183,6 +198,11 @@ questions:
     identifier: ib_network_ip
     question: 'IP for nodes on the InfiniBand network'
     default: '10.12.<%= node.group.index %>.<%= node.index %>'
+
+  - &ib_network_ip_node
+    identifier: ib_network_ip_node
+    question: 'IP for the node (InfiniBand network)'
+    default: '10.12.0.1'
 
   - &ib_network_netmask
     identifier: ib_network_netmask
@@ -219,6 +239,11 @@ questions:
     identifier: ext_network_ip
     question: 'IP for nodes on the external network'
     default: '10.101.<%= node.group.index %>.<%= node.index %>'
+
+  - &ext_network_ip_node
+    identifier: ext_network_ip_node
+    question: 'IP for the node (external network)'
+    default: '10.101.100.100'
 
   - &ext_network_netmask
     identifier: ext_network_netmask
@@ -400,31 +425,31 @@ node:
 local:
   - <<: *pri_network_defined
     dependent:
-    - *pri_network_ip
+    - *pri_network_ip_node
     - *pri_network_interface
     - *pri_network_short_hostname
 
   - <<: *mgt_network_defined
     dependent:
-    - *mgt_network_ip
+    - *mgt_network_ip_node
     - *mgt_network_interface
     - *mgt_network_short_hostname
 
   - <<: *bmc_network_defined
     dependent:
-    - *bmc_network_ip
+    - *bmc_network_ip_node
     - *bmc_password
 
   - <<: *ib_network_defined
     dependent:
-    - *ib_network_ip
+    - *ib_network_ip_node
     - *ib_network_interface
     - *ib_network_short_hostname
 
   - <<: *ext_network_defined
     dependent:
     - *ext_network_domain
-    - *ext_network_ip
+    - *ext_network_ip_node
     - *ext_network_network
     - *ext_network_netmask
     - *ext_network_interface
