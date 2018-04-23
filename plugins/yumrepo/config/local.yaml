@@ -1,0 +1,2 @@
+yumrepo_buildurl: http://repo.alces-software.com/repo/centos/7/base/
+yumrepo_isserver: true

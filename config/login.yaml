@@ -1,0 +1,18 @@
+networks:
+   pri:
+     ip: 10.10.0.<%= node.index + 20 %>
+   mgt:
+     defined: false
+   ib:
+     defined: false
+   bmc:
+     defined: false
+is_vm: true
+libvirt_host: 'master1'
+vm_disk_pool: 'local'
+vm_root_disk_size: 80
+vm_disk_pool_path: '/opt/vm'
+vm_memory: 4
+vm_cpus: 2
+vm_mac_address_build: '00:<%= (1..5).map{"%0.2X"%rand(256)}.join(":") %>'
+# disksetup inherited from domain which grows tmp

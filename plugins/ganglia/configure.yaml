@@ -9,17 +9,11 @@ questions:
     identifier: ganglia_serverip
     question: 'IP address of the Ganglia server'
 
-domain:
-  - *ganglia_serverip
+domain: []
 
-group:
-  - *ganglia_isserver
-  - *ganglia_serverip
+group: []
 
-node:
-  - *ganglia_isserver
-  - *ganglia_serverip
+node: []
 
-local:
-  - *ganglia_isserver
-  - *ganglia_serverip
+local: []
+

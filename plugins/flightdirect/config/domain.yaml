@@ -2,6 +2,6 @@ priority: 20
 files:
   setup:
     - /var/lib/metalware/plugins/flightdirect/files/flightdirect.sh
-flightdirect_isserver: <%= node.answer.flightdirect_isserver %>
-flightdirect_isclient: <%= node.answer.flightdirect_isclient %>
-flightdirect_sourceurl: <%= node.answer.flightdirect_sourceurl %>
+flightdirect_isserver: false
+flightdirect_isclient: true
+flightdirect_sourceurl: https://s3-eu-west-1.amazonaws.com/alces-flight/FlightDirect/1.0.4/flight-install

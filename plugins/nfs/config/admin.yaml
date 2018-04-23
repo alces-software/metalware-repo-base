@@ -1,0 +1,5 @@
+nfsmounts:
+  /opt/service:
+      defined: false
+  /opt/gridware:
+      defined: false

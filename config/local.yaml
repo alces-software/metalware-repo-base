@@ -1,31 +1,27 @@
 networks:
   pri:
-    defined: <%= answer.pri_network_defined %>
-    ip: <%= answer.pri_network_ip %>
-    short_hostname: <%= answer.pri_network_short_hostname %>
-    interface: <%= answer.pri_network_interface %>
+    defined: true
+    ip: 10.10.0.1
+    short_hostname: controller.pri
+    interface: eth0
   mgt:
-    defined: <%= answer.mgt_network_defined %>
-    ip: <%= answer.mgt_network_ip %>
-    short_hostname: <%= answer.mgt_network_short_hostname %>
-    interface: <%= answer.mgt_network_interface %>
+    defined: true
+    ip: 10.11.100.1
+    short_hostname: controller.mgt
+    interface: eth1
   bmc:
-    defined: <%= answer.bmc_network_defined %>
-    ip: <%= answer.bmc_network_ip %>
+    defined: false
   ib:
-    defined: <%= answer.ib_network_defined %>
-    ip: <%= answer.ib_network_ip %>
-    short_hostname: <%= answer.ib_network_short_hostname %>
-    interface: <%= answer.ib_network_interface %>
+    defined: false
   ext:
-    defined: <%= answer.ext_network_defined %>
-    domain: <%= answer.ext_network_domain %>
+    defined: true
+    domain: ext
     ip: <%= answer.ext_network_ip %>
     network: <%= answer.ext_network_network %>
     netmask: <%= answer.ext_network_netmask %>
     gateway: <%= answer.ext_network_gateway %>
-    short_hostname: <%= answer.ext_network_short_hostname %>
-    interface: <%= answer.ext_network_interface %>
+    short_hostname: controller.ext
+    interface: eth2
     firewallpolicy: external
 build_method: self
 files:

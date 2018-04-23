@@ -2,20 +2,32 @@ priority: 1
 files:
   scripts:
     - /var/lib/metalware/plugins/nfs/files/nfs.sh
-nfs_isserver: <%= node.answer.nfs_isserver %>
+nfs_isserver: false
 nfs_exports:
+  /export/apps:
+  /export/gridware:
+  /export/service:
+  /export/site:
   /export/users:
-  /export/data:
-    # Modify the export options [optional]
-    #options: <%= config.networks.pri.network %>/<%= config.networks.pri.netmask %>(ro,no_root_squash,async)
-nfs_isclient: <%= node.answer.nfs_issclient %>
+nfs_isclient: true
 nfs_mounts:
+  /opt/apps:
+    defined: true
+    server: master1
+    export: /export/apps
+  /opt/gridware:
+    defined: true
+    server: master1
+    export: /export/gridware
+  /opt/service:
+    defined: true
+    server: master1
+    export: /export/service
+  /opt/site:
+    defined: true
+    server: master1
+    export: /export/site
   /users:
     defined: true
-    server: 10.10.0.3
+    server: master1
     export: /export/users
-  /opt/data:
-    defined: true
-    server: 10.10.0.3
-    export: /export/data
-    options: intr,sync,rsize=32768,wsize=32768,_netdev

@@ -14,22 +14,11 @@ questions:
     question: 'User local scratch directory'
     default: ''
 
-domain:
-  - *flightcenter_archivedir
-  - *flightcenter_sharedscratchdir
-  - *flightcenter_localscratchdir
+domain: []
 
-group:
-  - *flightcenter_archivedir
-  - *flightcenter_sharedscratchdir
-  - *flightcenter_localscratchdir
+group: []
 
-node:
-  - *flightcenter_archivedir
-  - *flightcenter_sharedscratchdir
-  - *flightcenter_localscratchdir
+node: []
 
-local:
-  - *flightcenter_archivedir
-  - *flightcenter_sharedscratchdir
-  - *flightcenter_localscratchdir
+local: []
+

@@ -15,21 +15,11 @@ questions:
     question: 'URL for downloading Flight Direct installer (recommended to be somewhere local to the controller)'
     default: 'https://s3-eu-west-1.amazonaws.com/alces-flight/FlightDirect/1.0.4/flight-install'
 
-domain:
-  - *flightdirect_isclient
-  - *flightdirect_sourceurl
+domain: []
 
-group:
-  - *flightdirect_isserver
-  - *flightdirect_isclient
-  - *flightdirect_sourceurl
+group: []
 
-node:
-  - *flightdirect_isserver
-  - *flightdirect_isclient
-  - *flightdirect_sourceurl
+node: []
 
-local:
-  - *flightdirect_isserver
-  - *flightdirect_isclient
-  - *flightdirect_sourceurl
+local: []
+

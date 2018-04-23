@@ -2,8 +2,8 @@ priority: 0
 files:
   setup:
     - /var/lib/metalware/plugins/yumrepo/files/repos.sh
-yumrepo_buildurl: <%= node.answer.yumrepo_buildurl %>
-yumrepo_isserver: <%= node.answer.yumrepo_isserver %>
-yumrepo_sourcerepos: <%= node.answer.yumrepo_sourcerepos %>
-yumrepo_useclientrepofile: <%= node.answer.yumrepo_useclientrepofile %>
-yumrepo_clientrepofile: <%= node.answer.yumrepo_clientrepofile %>
+yumrepo_buildurl: http://10.10.0.1/repo/centos/7/base/
+yumrepo_isserver: false
+yumrepo_sourcerepos: base.alcesinternal
+yumrepo_useclientrepofile: true
+yumrepo_clientrepofile: http://10.10.0.1/repo/client.repo

@@ -16,10 +16,7 @@ questions:
     question: 'User directory for IPA users'
 
 domain:
-  - *ipa_serverip
-  - *ipa_servername
   - *ipa_insecurepassword
-  - *ipa_userdir
 
 group: []
 

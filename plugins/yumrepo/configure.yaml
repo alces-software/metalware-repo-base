@@ -23,21 +23,11 @@ questions:
         question: 'URL for nodes'
         default: 'http://10.10.0.1/repo/client.repo'
 
-domain:
-  - *yumrepo_buildurl
-  - *yumrepo_useclientrepofile
+domain: []
 
-group:
-  - *yumrepo_isserver
-  - *yumrepo_buildurl
-  - *yumrepo_useclientrepofile
+group: []
 
-node:
-  - *yumrepo_isserver
-  - *yumrepo_buildurl
-  - *yumrepo_useclientrepofile
+node: []
 
-local:
-  - *yumrepo_isserver
-  - *yumrepo_buildurl
-  - *yumrepo_useclientrepofile
+local: []
+

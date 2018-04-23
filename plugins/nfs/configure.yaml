@@ -10,17 +10,11 @@ questions:
     question: 'Is an NFS client?'
     type: 'boolean'
 
-domain:
-  - *nfs_isclient
+domain: []
 
-group:
-  - *nfs_isserver
-  - *nfs_isclient
+group: []
 
-node:
-  - *nfs_isserver
-  - *nfs_isclient
+node: []
 
-local:
-  - *nfs_isserver
-  - *nfs_isclient
+local: []
+

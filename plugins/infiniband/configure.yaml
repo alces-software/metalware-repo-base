@@ -7,14 +7,11 @@ questions:
       - identifier: ib_mellanoxinstaller
         question: 'Network location of installer'
 
-domain:
-  - *ib_use_installer
+domain: []
 
-group:
-  - *ib_use_installer
+group: []
 
-node:
-  - *ib_use_installer
+node: []
 
-local:
-  - *ib_use_installer
+local: []
+
