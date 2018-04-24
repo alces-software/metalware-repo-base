@@ -136,7 +136,7 @@ files:
     - core/syslog.sh
     - core/configs/metalware.conf
     - core/configs/rsyslog-remote
-    - core/firstrun/firewall_rsyslog.bash
+    - core/firstrun_scripts/firewall_rsyslog.bash
     - core/postfix.sh
     - core/network-base.sh
     - core/network-ipmi.sh
