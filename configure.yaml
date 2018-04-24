@@ -294,7 +294,6 @@ domain:
   - *root_password
   - *root_ssh_key
 
-  - *bmc_network_ip
   - *bmc_password
 
 group:
