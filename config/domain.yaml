@@ -159,7 +159,7 @@ firewall:
     services: 'ssh snmp'
 
 postfix:
-  relayhost: "<%= answer.postfix_relay %>"
+  relayhost: "controller.<%= config.networks.pri.domain %>.<%= config.domain %>"
 
 is_vm: '<%= answer.is_vm %>'
 libvirt_host: '<%= answer.libvirt_host %>'
