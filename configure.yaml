@@ -89,7 +89,6 @@ questions:
   - &pri_network_ip_node
     identifier: pri_network_ip_node
     question: 'IP address for the node (primary network)'
-    default: '10.10.0.1'
 
   - &pri_network_netmask
     identifier: pri_network_netmask
@@ -135,7 +134,6 @@ questions:
   - &mgt_network_ip_node
     identifier: mgt_network_ip_node
     question: 'IP address for the node (management network)'
-    default: '10.11.100.1'
 
   - &mgt_network_netmask
     identifier: mgt_network_netmask
@@ -171,7 +169,6 @@ questions:
   - &bmc_network_ip_node
     identifier: bmc_network_ip_node
     question: 'IP for the node (bmc network)'
-    default: '10.11.0.1'
 
   - &bmc_network_vlan
     identifier: bmc_network_vlan
@@ -202,7 +199,6 @@ questions:
   - &ib_network_ip_node
     identifier: ib_network_ip_node
     question: 'IP for the node (InfiniBand network)'
-    default: '10.12.0.1'
 
   - &ib_network_netmask
     identifier: ib_network_netmask
@@ -243,7 +239,6 @@ questions:
   - &ext_network_ip_node
     identifier: ext_network_ip_node
     question: 'IP for the node (external network)'
-    default: '10.101.100.100'
 
   - &ext_network_netmask
     identifier: ext_network_netmask
@@ -393,23 +388,23 @@ node:
 
   - <<: *pri_network_defined
     dependent:
-    - *pri_network_ip
+    - *pri_network_ip_node
     - *pri_network_interface
 
   - <<: *mgt_network_defined
     dependent:
-    - *mgt_network_ip
+    - *mgt_network_ip_node
     - *mgt_network_interface
 
   - <<: *bmc_network_defined
     dependent:
-    - *bmc_network_ip
+    - *bmc_network_ip_node
     - *bmc_password
     - *bmc_network_vlan
 
   - <<: *ib_network_defined
     dependent:
-    - *ib_network_ip
+    - *ib_network_ip_node
     - *ib_network_interface
 
   - <<: *is_vm
