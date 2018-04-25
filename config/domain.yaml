@@ -24,7 +24,7 @@ networks:
     hostname: "<%= config.networks.pri.short_hostname %>.<%= config.domain %>"
     domain: "<%= answer.pri_network_domain %>"
     short_hostname: "<%= node.name %>.<%= config.networks.pri.domain %>"
-    ip: "<%= answer.pri_network_ip %>"
+    ip: "<%= answer.pri_network_ip_node || answer.pri_network_ip %>"
     netmask: "<%= answer.pri_network_netmask %>"
     network: "<%= answer.pri_network_network %>"
     gateway: "<%= answer.pri_network_gateway %>"
@@ -39,7 +39,7 @@ networks:
     hostname: "<%= config.networks.mgt.short_hostname %>.<%= config.domain %>"
     domain: "<%= answer.mgt_network_domain %>"
     short_hostname: "<%= node.name %>.<%= config.networks.mgt.domain %>"
-    ip: "<%= answer.mgt_network_ip %>"
+    ip: "<%= answer.mgt_network_ip_node || answer.mgt_network_ip %>"
     netmask: "<%= answer.mgt_network_netmask %>"
     network: "<%= answer.mgt_network_network %>"
     gateway:
@@ -53,7 +53,7 @@ networks:
     hostname: "<%= config.networks.ib.short_hostname %>.<%= config.domain %>"
     domain: "<%= answer.ib_network_domain %>"
     short_hostname: "<%= node.name %>.<%= config.networks.ib.domain %>"
-    ip: "<%= answer.ib_network_ip %>"
+    ip: "<%= answer.ib_network_ip_node || answer.ib_network_ip %>"
     netmask: "<%= answer.ib_network_netmask %>"
     network: "<%= answer.ib_network_network %>"
     gateway:
@@ -67,7 +67,7 @@ networks:
     hostname: "<%= config.networks.bmc.short_hostname %>.<%= config.networks.mgt.domain %>.<%= config.domain %>"
     domain: 'bmc'
     short_hostname: "<%= node.name %>.<%= config.networks.bmc.domain %>"
-    ip: "<%= answer.bmc_network_ip %>"
+    ip: "<%= answer.bmc_network_ip_node || answer.bmc_network_ip %>"
     netmask: "<%= answer.mgt_network_netmask %>"
     network: "<%= answer.mgt_network_network %>"
     gateway: 0.0.0.0
