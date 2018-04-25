@@ -131,13 +131,19 @@ files:
   core:
     - core/base.sh
     - core/chrony.sh
+    - core/configs/chrony.conf
+    - core/firstrun_scripts/chronyfix.bash
     - core/syslog.sh
+    - core/configs/metalware.conf
+    - core/configs/rsyslog-remote
+    - core/firstrun_scripts/firewall_rsyslog.bash
     - core/postfix.sh
     - core/network-base.sh
     - core/network-ipmi.sh
     - core/network-join.sh
     - core/networking.sh
     - core/configs/authorized_keys
+    - core/firstrun_scripts/firewall_main.bash
   scripts:
     - local-script.sh
 
