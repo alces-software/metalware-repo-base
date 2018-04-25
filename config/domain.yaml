@@ -143,6 +143,7 @@ files:
     - core/network-join.sh
     - core/networking.sh
     - core/configs/authorized_keys
+    - core/firstrun_scripts/firewall_main.bash
   scripts:
     - local-script.sh
 

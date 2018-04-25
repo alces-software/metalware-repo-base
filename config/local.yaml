@@ -52,6 +52,13 @@ files:
     - core/networking.sh
     - core/configs/authorized_keys
     - local/extra.sh
+    - core/configs/dhcpd.conf
+    - core/configs/pxelinux_default
+    - core/configs/named.conf
+    - core/configs/http/deployment.conf
+    - core/configs/http/installer.conf
+    - core/configs/kscomplete.php
+    - core/firstrun_scripts/firewall_main.bash
 build:
   pxeboot_path: /var/lib/tftpboot/boot
 ntp:
