@@ -23,3 +23,31 @@ IN NS <%= domain.hostip %>.
 <%             end -%>
 <%         end -%>
 <%     end -%>
+
+# PDUs
+<%     assets.pdus.each do |pdu| -%>
+<%         if pdu.oob.network.to_s == alces.named.net.network.to_s -%>
+<%= pdu.metadata.name %> IN A <%= pdu.oob.ip %>
+<%         end -%>
+<%     end -%>
+
+# Switches
+<%     assets.switches.each do |switch| -%>
+<%         if switch.oob.network.to_s == alces.named.net.network.to_s -%>
+<%= switch.metadata.name %> IN A <%= switch.oob.ip %>
+<%         end -%>
+<%     end -%>
+
+# Disk Arrays
+<%     assets.disk_arrays.each do |disk_array| -%>
+<%         if disk_array.oob.network.to_s == alces.named.net.network.to_s -%>
+<%= disk_array.metadata.name %> IN A <%= disk_array.oob.ip %>
+<%         end -%>
+<%     end -%>
+
+# Chassis
+<%     assets.chassis.each do |chassis| -%>
+<%         if chassis.oob.network.to_s == alces.named.net.network.to_s -%>
+<%= chassis.metadata.name %> IN A <%= chassis.oob.ip %>
+<%         end -%>
+<%     end -%>
