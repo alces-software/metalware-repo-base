@@ -5,3 +5,23 @@
 <% end -%>
 <% end %>
 <% end -%>
+
+# PDUs
+<% assets.pdus.each do |pdu| -%>
+<%= pdu.oob.ip %> <%= pdu.metadata.name %>
+<% end -%>
+
+# Switches
+<% assets.switches.each do |switch| -%>
+<%= switch.oob.ip %> <%= switch.metadata.name %>
+<% end -%>
+
+# Disk Arrays
+<% assets.disk_arrays.each do |disk_array| -%>
+<%= disk_array.oob.ip %> <%= disk_array.metadata.name %>
+<% end -%>
+
+# Chassis
+<% assets.chassis.each do |chassis| -%>
+<%= chassis.oob.ip %> <%= chassis.metadata.name %>
+<% end -%>
