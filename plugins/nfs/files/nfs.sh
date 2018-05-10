@@ -33,7 +33,9 @@ EOF`
 echo "$MOUNTS" >> /etc/fstab
 
 <% node.plugins.nfs.config.nfs_mounts.each do | mount, path | -%>
+<% if path.defined -%>
 mkdir -p <%= mount %>
+<% end -%>
 <% end -%>
 
 <% end -%>
