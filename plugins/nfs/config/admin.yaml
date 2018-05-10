@@ -1,4 +1,4 @@
-nfsmounts:
+nfs_mounts:
   /opt/service:
       defined: false
   /opt/gridware:

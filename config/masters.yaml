@@ -13,7 +13,7 @@ networks:
     bond:
       interface: bond0
       slave_interfaces: p1p1 p2p1
-      options: 'mode=1 primary=eth0 miimon=80'
+      options: 'mode=1 primary=p1p1 miimon=80'
   mgt:
     defined: true
     interface: mgt
@@ -23,6 +23,11 @@ networks:
     bridge:
       interface: mgt
       slave_interfaces: em2
+  ib:
+    defined: false
+  bmc:
+    defined: true
+    ip: "10.11.10.<%= node.index + 10 %>"
 disksetup: |
   zerombr
   bootloader --location=mbr --driveorder=<%= config.disklabel %> --append="$bootloaderappend"

@@ -7,14 +7,14 @@ networks:
     defined: false
   bmc:
     defined: false
-is_vm: true
-libvirt_host: 'master1'
-vm_disk_pool: 'local'
-vm_root_disk_size: 80
-vm_disk_pool_path: '/opt/vm'
-vm_memory: 4
-vm_cpus: 2
-vm_mac_address_build: '00:<%= (1..5).map{"%0.2X"%rand(256)}.join(":") %>'
+is_vm: <%= answer.is_vm %>
+libvirt_host: <%= answer.libvirt_host %>
+vm_disk_pool: <%= answer.vm_disk_pool %>
+vm_root_disk_size: <%= answer.vm_root_disk_size %>
+vm_disk_pool_path: <%= answer.vm_disk_pool_path %>
+vm_memory: <%= answer.vm_memory %>
+vm_cpus: <%= answer.vm_cpus %>
+vm_mac_address_build: <%= answer.vm_mac_address_build %>
 disksetup: |
   zerombr
   bootloader --location=mbr --driveorder=<%= config.disklabel %> --append="$bootloaderappend"
@@ -25,6 +25,6 @@ disksetup: |
   part pv.01 --size=1 --grow --asprimary --ondisk <%= config.disklabel %>
   volgroup system pv.01
   logvol  /  --fstype ext4 --vgname=system  --size=16384 --name=root
-  logvol  /var --fstype ext4 --vgname=system --size=16384 --name=var --grow
-  logvol  /tmp --fstype ext4 --vgname=system --size=1 --name=tmp
+  logvol  /var --fstype ext4 --vgname=system --size=4096 --name=var
+  logvol  /tmp --fstype ext4 --vgname=system --size=1 --name=tmp --grow
   logvol  swap  --fstype swap --vgname=system  --size=8096  --name=swap1

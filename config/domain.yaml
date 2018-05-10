@@ -34,7 +34,7 @@ networks:
     firewallpolicy: trusted
 
   mgt:
-    defined: false
+    defined: true
     interface: "eth1"
     hostname: "<%= config.networks.mgt.short_hostname %>.<%= config.domain %>"
     domain: "mgt"
@@ -48,7 +48,7 @@ networks:
     firewallpolicy: trusted
 
   ib:
-    defined: false
+    defined: true
     interface: "ib0"
     hostname: "<%= config.networks.ib.short_hostname %>.<%= config.domain %>"
     domain: "ib"
@@ -62,7 +62,7 @@ networks:
     firewallpolicy: trusted
 
   bmc:
-    defined: false
+    defined: true
     interface: bmc
     hostname: "<%= config.networks.bmc.short_hostname %>.<%= config.networks.mgt.domain %>.<%= config.domain %>"
     domain: 'bmc'

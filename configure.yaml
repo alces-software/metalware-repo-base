@@ -7,7 +7,7 @@ questions:
   - &domain
     identifier: domain
     question: 'Fully-qualified domain name for cluster nodes'
-    default: '<%= domain.config.cluster %>.cluster.local'
+    default: '<%= domain.config.cluster %>.alces.network'
 
   - &externaldns
     identifier: externaldns
@@ -318,6 +318,15 @@ group:
     dependent:
     - *ib_network_interface
 
+  - <<: *is_vm
+    dependent:
+    - *libvirt_host
+    - *vm_memory
+    - *vm_cpus
+    - *vm_root_disk_size
+    - *vm_disk_pool
+    - *vm_disk_pool_path
+
 node:
   - <<: *pri_network_defined
     dependent:
@@ -334,6 +343,16 @@ node:
   - <<: *ib_network_defined
     dependent:
     - *ib_network_interface
+
+  - <<: *is_vm
+    dependent:
+    - *libvirt_host
+    - *vm_memory
+    - *vm_cpus
+    - *vm_root_disk_size
+    - *vm_disk_pool
+    - *vm_disk_pool_path
+    - *vm_mac_address_build
 
 local:
   - *ext_network_ip
