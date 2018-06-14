@@ -32,7 +32,7 @@ IN NS <%= domain.hostip %>.
 <%     end -%>
 
 # Switches
-<%     assets.switches.each do |switch| -%>
+<%     assets.network_switches.each do |switch| -%>
 <%         if switch.oob.network.to_s == alces.named.net.network.to_s -%>
 <%= switch.metadata.name %> IN A <%= switch.oob.ip %>
 <%         end -%>

@@ -31,7 +31,7 @@ $TTL 300
 <%     end -%>
 
 # Switches
-<%     assets.switches.each do |switch| -%>
+<%     assets.network_switches.each do |switch| -%>
 <%         if switch.oob.network.to_s == alces.named.net.network.to_s -%>
 <% ip_split = switch.oob.network.ip.split(/\./) -%>
 <%= ip_split[3] %>.<%= ip_split[2] %> IN PTR <%= switch.metadata.name %>
