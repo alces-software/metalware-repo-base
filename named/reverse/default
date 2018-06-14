@@ -25,7 +25,7 @@ $TTL 300
 # PDUs
 <%     assets.pdus.each do |pdu| -%>
 <%         if pdu.oob.network.to_s == alces.named.net.network.to_s -%>
-<% ip_split = pdu.oob.network.ip.split(/\./) -%>
+<% ip_split = pdu.oob.ip.split(/\./) -%>
 <%= ip_split[3] %>.<%= ip_split[2] %> IN PTR <%= pdu.metadata.name %>
 <%         end -%>
 <%     end -%>
@@ -33,7 +33,7 @@ $TTL 300
 # Switches
 <%     assets.network_switches.each do |switch| -%>
 <%         if switch.oob.network.to_s == alces.named.net.network.to_s -%>
-<% ip_split = switch.oob.network.ip.split(/\./) -%>
+<% ip_split = switch.oob.ip.split(/\./) -%>
 <%= ip_split[3] %>.<%= ip_split[2] %> IN PTR <%= switch.metadata.name %>
 <%         end -%>
 <%     end -%>
@@ -41,7 +41,7 @@ $TTL 300
 # Disk Arrays
 <%     assets.disk_arrays.each do |disk_array| -%>
 <%         if disk_array.oob.network.to_s == alces.named.net.network.to_s -%>
-<% ip_split = disk_array.oob.network.ip.split(/\./) -%>
+<% ip_split = disk_array.oob.ip.split(/\./) -%>
 <%= ip_split[3] %>.<%= ip_split[2] %> IN PTR <%= disk_array.metadata.name %>
 <%         end -%>
 <%     end -%>
@@ -49,7 +49,7 @@ $TTL 300
 # Chassis
 <%     assets.chassis.each do |chassis| -%>
 <%         if chassis.oob.network.to_s == alces.named.net.network.to_s -%>
-<% ip_split = chassis.oob.network.ip.split(/\./) -%>
+<% ip_split = chassis.oob.ip.split(/\./) -%>
 <%= ip_split[3] %>.<%= ip_split[2] %> IN PTR <%= chassis.metadata.name %>
 <%         end -%>
 <%     end -%>
