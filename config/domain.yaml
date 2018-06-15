@@ -68,14 +68,14 @@ networks:
     domain: 'bmc'
     short_hostname: "<%= node.name %>.<%= config.networks.bmc.domain %>"
     ip: "<%= (node.asset.oob.ip rescue nil) || answer.bmc_network_ip_node || answer.bmc_network_ip %>"
-    netmask: "<%= node.asset.oob.netmask || answer.mgt_network_netmask %>"
-    network: "<%= node.asset.oob.network || answer.mgt_network_network %>"
+    netmask: "<%= (node.asset.oob.netmask rescue nil) || answer.mgt_network_netmask %>"
+    network: "<%= (node.asset.oob.network rescue nil) || answer.mgt_network_network %>"
     gateway: 0.0.0.0
-    bmcpassword: "<%= node.asset.oob.password || answer.bmc_password %>"
+    bmcpassword: "<%= (node.asset.oob.password rescue nil) || answer.bmc_password %>"
     bmcchannel: 1
-    bmcuser: <%= node.asset.oob.user || 'admin' %>
+    bmcuser: <%= (node.asset.oob.user rescue nil) || 'admin' %>
     bmcuserid: 2
-    bmcvlan: <%= node.asset.oob.vlan || answer.bmc_network_vlan %>
+    bmcvlan: <%= (node.asset.oob.vlan rescue nil) || answer.bmc_network_vlan %>
 
 disklabel: 'sda'
 disksetup: |
