@@ -93,7 +93,7 @@ questions:
   - &pri_network_netmask
     identifier: pri_network_netmask
     question: 'Netmask for the primary network'
-    default: '255.255.255.0'
+    default: '255.255.0.0'
 
   - &pri_network_network
     identifier: pri_network_network
@@ -102,7 +102,7 @@ questions:
 
   - &pri_network_gateway
     identifier: pri_network_gateway
-    question: "Gateway IP for the primary network (usually the controller's primary IP)"
+    question: "Gateway IP for the primary network (usually login1's primary IP)"
     default: '10.100.<%= node.group.index %>.10'
 
   - &pri_network_interface
@@ -140,6 +140,7 @@ group:
 
   - <<: *pri_network_defined
     dependent:
+    - *pri_network_domain
     - *pri_network_ip
     - *pri_network_gateway
     - *pri_network_interface
@@ -150,11 +151,14 @@ node:
   - <<: *pri_network_defined
     dependent:
     - *pri_network_ip_node
+    - *pri_network_gateway
     - *pri_network_interface
 
 local:
   - <<: *pri_network_defined
     dependent:
+    - *pri_network_domain
     - *pri_network_ip_node
     - *pri_network_interface
+    - *pri_network_gateway
     - *pri_network_short_hostname
