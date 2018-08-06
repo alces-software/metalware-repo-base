@@ -22,7 +22,7 @@ networks:
     interface: "<%= answer.pri_network_interface %>"
     hostname: "<%= config.networks.pri.short_hostname %>.<%= config.domain %>"
     domain: "<%= answer.pri_network_domain %>"
-    short_hostname: "<%= node.name %>.<%= config.networks.pri.domain %>"
+    short_hostname: "<%= node.name.sub(node.group.name + '-', '') %>.<%= config.networks.pri.domain %>"
     ip: "<%= answer.pri_network_ip_node || answer.pri_network_ip %>"
     netmask: "<%= answer.pri_network_netmask %>"
     network: "<%= answer.pri_network_network %>"
@@ -50,7 +50,6 @@ files:
     - core/firstrun_scripts/firewall_rsyslog.bash
     - core/postfix.sh
     - core/network-base.sh
-    - core/network-ipmi.sh
     - core/network-join.sh
     - core/networking.sh
     - core/configs/authorized_keys
@@ -60,7 +59,7 @@ files:
 
 ntp:
   is_server: false
-  server: controller.<%= config.networks.pri.domain %>.<%= config.domain %>
+  server: controller.dom0.<%= config.domain %>
 
 rsyslog:
   is_server: false
