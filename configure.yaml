@@ -9,6 +9,11 @@ questions:
     question: 'Fully-qualified domain name for cluster nodes'
     default: '<%= domain.config.cluster %>.alces.network'
 
+  - &cloudware_domain
+    identifier: cloudware_domain
+    question: 'Subnet of cloudware domain0'
+    default: '10.78.0.0'
+
   - &externaldns
     identifier: externaldns
     question: 'External DNS server IP'

@@ -9,7 +9,7 @@ mkdir -p <%= path %>
 # Increase nfsd thread count
 sed -ie "s/^#\RPCNFSDCOUNT.*$/\RPCNFSDCOUNT=32/g" /etc/sysconfig/nfs
 
-EXPORTOPTS="<%= config.networks.pri.network %>/<%= config.networks.pri.netmask %>(rw,no_root_squash,sync)"
+EXPORTOPTS="<%= config.networks.pri.network %>/<%= config.networks.pri.netmask %>(rw,no_root_squash,sync) <%= config.cloudware_domain %>/255.255.0.0(rw,no_root_squash,sync)"
 
 EXPORTS=`cat << EOF
 <% node.plugins.nfs.config.nfs_exports.each do | path, opts | -%>
