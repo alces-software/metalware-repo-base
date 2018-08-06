@@ -2,6 +2,8 @@ networks:
   pri:
     defined: <%= answer.pri_network_defined %>
     ip: <%= answer.pri_network_ip_node || answer.pri_network_ip_node %>
+    netmask: "<%= answer.pri_network_netmask %>"
+    network: "<%= answer.pri_network_network %>"
     short_hostname: <%= answer.pri_network_short_hostname %>
     interface: <%= answer.pri_network_interface %>
 build_method: self
@@ -23,7 +25,6 @@ files:
     - core/firstrun_scripts/firewall_rsyslog.bash
     - core/postfix.sh
     - core/network-base.sh
-    - core/network-ipmi.sh
     - core/network-join.sh
     - core/networking.sh
     - core/configs/authorized_keys
