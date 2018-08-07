@@ -122,6 +122,7 @@ questions:
 
 domain:
   - *cluster_name
+  - *cloudware_domain
   - *domain
   - *externaldns
   - *internaldns
