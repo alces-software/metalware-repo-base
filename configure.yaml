@@ -118,7 +118,7 @@ questions:
   - &pri_network_short_hostname
     identifier: pri_network_short_hostname
     question: 'Hostname for node PRI'
-    default: 'controller.<%= config.networks.pri.domain %>'
+    default: 'gateway.<%= config.networks.pri.domain %>'
 
 domain:
   - *cluster_name
