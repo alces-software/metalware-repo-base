@@ -60,11 +60,11 @@ files:
 
 ntp:
   is_server: false
-  server: controller.dom0.<%= config.domain %>
+  server: gateway.dom0.<%= config.domain %>
 
 rsyslog:
   is_server: false
-  server: controller
+  server: gateway
 
 firewall:
   enabled: true

@@ -20,7 +20,7 @@ questions:
 
   - &internaldns
     identifier: internaldns
-    question: "Internal DNS server IP (usually the controller's primary IP)"
+    question: "Internal DNS server IP (usually the gateway's primary IP)"
 
   - &root_password
     identifier: root_password
@@ -72,8 +72,8 @@ questions:
 
   - &postfix_relay
     identifier: postfix_relay
-    question: 'Postfix relay server for mail (usually the controller)'
-    default: 'controller.<%= config.networks.pri.domain %>.<%= config.domain %>'
+    question: 'Postfix relay server for mail (usually the gateway)'
+    default: 'gateway.<%= config.networks.pri.domain %>.<%= config.domain %>'
 
   # Primary network.
   - &pri_network_defined
