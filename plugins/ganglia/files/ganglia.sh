@@ -275,6 +275,7 @@ include ("/etc/ganglia/conf.d/*.conf")
 EOF
 `
 
+yum -y install epel-release
 yum -y install ganglia-gmond
 
 <% if (node.plugins.ganglia.config.ganglia_isserver rescue false) then -%>
