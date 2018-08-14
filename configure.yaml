@@ -52,7 +52,7 @@ questions:
 
   - &genders_additional_groups
     identifier: genders_additional_groups
-    question: "Additional genders groups for this group, e.g. 'gpunodes,nodes'; the group being configured is the primary group"
+    question: "Additional genders groups for this group, e.g. 'storage,rack1'; the group being configured is the primary group"
     default: ''
 
   - &kickstart_template
