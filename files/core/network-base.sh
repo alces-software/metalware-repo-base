@@ -9,7 +9,7 @@ service NetworkManager stop
 echo "HOSTNAME=<%= config.networks.pri.hostname %>" >> /etc/sysconfig/network
 echo "<%= config.networks.pri.hostname %>" > /etc/hostname
 
-<% if config.dns_type.to_s == 'named' || node.name.to_s != 'local'  %>
+<% if config.dns_type.to_s == 'named' || node.name.to_s != 'local' || (config.networks.pri.ip == node.plugins.ipa.config.ipa_serverip rescue false) %>
 <%= if node.name.to_s == 'local' then 'cat << FIRSTRUN > /var/lib/firstrun/scripts/resolv.bash' end %>
 cat << EOF > /etc/resolv.conf
 search <%= config.search_domains %>
