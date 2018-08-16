@@ -121,22 +121,9 @@ questions:
     default: 'gateway.<%= config.networks.pri.domain %>'
 
 domain:
-  - *cluster_name
-  - *cloudware_domain
-  - *domain
-  - *externaldns
-  - *internaldns
   - *root_password
   - *root_ssh_key
   - *dns_type
-  - *postfix_relay
-
-  - *pri_network_domain
-  - *pri_network_ip
-  - *pri_network_netmask
-  - *pri_network_network
-  - *pri_network_gateway
-  - *pri_network_interface
 
 group:
   - *genders_host_range
@@ -144,27 +131,14 @@ group:
   - *genders_all_group
   - *genders_additional_groups
 
-  - <<: *pri_network_defined
-    dependent:
-    - *pri_network_domain
-    - *pri_network_ip
-    - *pri_network_gateway
-    - *pri_network_interface
+  - *pri_network_ip
+  - *pri_network_network
+  - *pri_network_gateway
 
 node:
-  - *root_password
-
-  - <<: *pri_network_defined
-    dependent:
-    - *pri_network_ip_node
-    - *pri_network_gateway
-    - *pri_network_interface
+  - *pri_network_ip_node
+  - *pri_network_gateway
+  - *pri_network_interface
 
 local:
-  - <<: *pri_network_defined
-    dependent:
-    - *pri_network_domain
-    - *pri_network_ip_node
-    - *pri_network_interface
-    - *pri_network_gateway
-    - *pri_network_short_hostname
+  - *pri_network_defined
