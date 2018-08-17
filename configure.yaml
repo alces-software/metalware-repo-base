@@ -141,4 +141,4 @@ node:
   - *pri_network_interface
 
 local:
-  - *pri_network_defined
+  - *pri_network_short_hostname
