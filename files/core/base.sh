@@ -13,7 +13,7 @@ echo "<%= config.networks.pri.ip %> <%= config.networks.pri.hostname %>" >> /etc
 # General packages
 yum -y install git vim emacs xauth xhost xdpyinfo xterm xclock tigervnc-server ntpdate wget vconfig bridge-utils patch tcl-devel gettext net-tools bind-utils ipmitool
 yum -y update --exclude=centos-release*
-echo "exclude=centos-release*" >> /etc/yum.conf
+sed '/^exclude=/{h;s/=/=centos-release\* /};${x;/^$/{s//exclude=centos-release\*/;H};x}' /etc/yum.conf -i
 
 
 # SSH
