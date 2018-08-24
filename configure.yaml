@@ -14,6 +14,11 @@ questions:
     question: 'Subnet of cloudware domain0'
     default: '10.78.0.0'
 
+  - &clusters_network
+    identifier: clusters_network
+    question: 'Subnet of cloudware clusters'
+    default: '10.100.0.0'
+
   - &externaldns
     identifier: externaldns
     question: 'External DNS server IP'
@@ -84,7 +89,7 @@ questions:
   - &pri_network_domain
     identifier: pri_network_domain
     question: 'Domain for the primary network (usually the cloudware domain name)'
-    default: 'cluster1'
+    default: 'pri'
 
   - &pri_network_ip
     identifier: pri_network_ip
@@ -132,6 +137,7 @@ group:
   - *genders_additional_groups
 
   - *pri_network_ip
+  - *pri_network_domain
   - *pri_network_network
   - *pri_network_gateway
 

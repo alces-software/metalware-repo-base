@@ -11,6 +11,7 @@ build_method: basic
 # Generic networking properties.
 domain: <%= answer.domain %>
 cloudware_domain: <%= answer.cloudware_domain %>
+clusters_network: <%= answer.clusters_network %>
 search_domains: "<% config.networks.each do |network, details| -%><% next if network.to_s == 'ext' %><%= details.domain %><%= if network.to_s == 'bmc' then '.mgt' else '' end %>.<%= config.domain %> <% end -%><%= config.domain %>"
 dns_type: "<%= answer.dns_type %>"
 externaldns: <%= answer.externaldns %>
