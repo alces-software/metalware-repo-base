@@ -20,7 +20,7 @@ jobid: ""
 networks:
   pri:
     defined: <%= answer.pri_network_defined %>
-    interface: "<%= pri_network_interface %>"
+    interface: "<%= answer.pri_network_interface %>"
     hostname: "<%= config.networks.pri.short_hostname %>.<%= config.domain %>"
     domain: "pri"
     short_hostname: "<%= node.name %>.<%= config.networks.pri.domain %>"
@@ -35,7 +35,7 @@ networks:
 
   mgt:
     defined: <%= answer.mgt_network_defined %>
-    interface: "<%= mgt_network_interface %>"
+    interface: "<%= answer.mgt_network_interface %>"
     hostname: "<%= config.networks.mgt.short_hostname %>.<%= config.domain %>"
     domain: "mgt"
     short_hostname: "<%= node.name %>.<%= config.networks.mgt.domain %>"
@@ -49,7 +49,7 @@ networks:
 
   ib:
     defined: <%= answer.ib_network_defined %>
-    interface: "<%= ib_network_interface %>"
+    interface: "<%= answer.ib_network_interface %>"
     hostname: "<%= config.networks.ib.short_hostname %>.<%= config.domain %>"
     domain: "ib"
     short_hostname: "<%= node.name %>.<%= config.networks.ib.domain %>"
