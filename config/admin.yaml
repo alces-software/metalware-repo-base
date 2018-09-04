@@ -1,12 +1,6 @@
 networks:
   pri:
     ip: 10.10.0.<%= node.index + 55 %>
-  mgt:
-    defined: false
-  ib:
-    defined: false
-  bmc:
-    defined: false
 is_vm: <%= answer.is_vm %>
 libvirt_host: <%= answer.libvirt_host %>
 vm_disk_pool: <%= answer.vm_disk_pool %>

@@ -19,12 +19,12 @@ jobid: ""
 # Properties for specific config.networks.
 networks:
   pri:
-    defined: true
-    interface: "eth0"
+    defined: <%= answer.pri_network_defined %>
+    interface: "<%= pri_network_interface %>"
     hostname: "<%= config.networks.pri.short_hostname %>.<%= config.domain %>"
     domain: "pri"
     short_hostname: "<%= node.name %>.<%= config.networks.pri.domain %>"
-    ip: "10.10.0.<%= node.index %>"
+    ip: "<%= answer.pri_network_ip %>"
     netmask: "255.255.0.0"
     network: "10.10.0.0"
     gateway: "10.10.0.1"
@@ -34,12 +34,12 @@ networks:
     firewallpolicy: trusted
 
   mgt:
-    defined: true
-    interface: "eth1"
+    defined: <%= answer.mgt_network_defined %>
+    interface: "<%= mgt_network_interface %>"
     hostname: "<%= config.networks.mgt.short_hostname %>.<%= config.domain %>"
     domain: "mgt"
     short_hostname: "<%= node.name %>.<%= config.networks.mgt.domain %>"
-    ip: "10.11.100.<%= node.index %>"
+    ip: "<%= answer.mgt_network_ip %>"
     netmask: "255.255.0.0"
     network: "10.11.0.0"
     gateway:
@@ -48,12 +48,12 @@ networks:
     firewallpolicy: trusted
 
   ib:
-    defined: true
-    interface: "ib0"
+    defined: <%= answer.ib_network_defined %>
+    interface: "<%= ib_network_interface %>"
     hostname: "<%= config.networks.ib.short_hostname %>.<%= config.domain %>"
     domain: "ib"
     short_hostname: "<%= node.name %>.<%= config.networks.ib.domain %>"
-    ip: "10.12.100.<%= node.index %>"
+    ip: "<%= answer.ib_network_ip %>"
     netmask: "255.255.0.0"
     network: "10.12.0.0"
     gateway:
@@ -62,12 +62,12 @@ networks:
     firewallpolicy: trusted
 
   bmc:
-    defined: true
+    defined: <%= answer.bmc_network_defined %>
     interface: bmc
     hostname: "<%= config.networks.bmc.short_hostname %>.<%= config.networks.mgt.domain %>.<%= config.domain %>"
     domain: 'bmc'
     short_hostname: "<%= node.name %>.<%= config.networks.bmc.domain %>"
-    ip: "10.11.0.<%= node.index %>"
+    ip: "<%= answer.bmc_network_ip %>"
     netmask: "255.255.0.0"
     network: "10.11.0.0"
     gateway: 0.0.0.0

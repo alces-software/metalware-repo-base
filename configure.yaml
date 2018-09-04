@@ -304,18 +304,22 @@ group:
 
   - <<: *pri_network_defined
     dependent:
+    - *pri_network_ip
     - *pri_network_interface
 
   - <<: *mgt_network_defined
     dependent:
+    - *mgt_network_ip
     - *mgt_network_interface
 
   - <<: *bmc_network_defined
     dependent:
+    - *bmc_network_ip
     - *bmc_network_vlan
 
   - <<: *ib_network_defined
     dependent:
+    - *ib_network_ip
     - *ib_network_interface
 
   - <<: *is_vm
