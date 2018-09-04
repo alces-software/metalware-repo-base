@@ -6,7 +6,7 @@ networks:
     interface: eth0
   mgt:
     defined: true
-    ip: 10.11.100.1
+    ip: 10.11.10.1
     short_hostname: controller.mgt
     interface: eth1
   bmc:
