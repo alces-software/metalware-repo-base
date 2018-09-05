@@ -26,6 +26,12 @@ EOF`
 
 echo "$MOUNTS" >> /etc/fstab
 
+<% node.plugins.lustre.config.lustre_mounts.each do | mount, path | -%>
+<% if path.defined -%>
+mkdir -p <%= mount %>
+<% end -%>
+<% end -%>
+
 <% if config.networks.ib.defined -%>
 # Infiniband/Lustre hang fix
 cat << EOF > /etc/systemd/system/lustre.service
