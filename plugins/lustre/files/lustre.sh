@@ -26,4 +26,30 @@ EOF`
 
 echo "$MOUNTS" >> /etc/fstab
 
+<% if config.networks.ib.defined -%>
+# Infiniband/Lustre hang fix
+cat << EOF > /etc/systemd/system/lustre.service
+[Unit]
+Description=Stop Lustre
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStop=/usr/local/sbin/stop-lustre
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+cat << EOF > /usr/local/sbin/stop-lustre
+#!/bin/bash
+
+/usr/bin/umount -f -a -t lustre
+/usr/sbin/lustre_rmmod
+EOF
+chmod +x /usr/local/sbin/stop-lustre
+systemctl daemon-reload
+systemctl enable lustre --now
+<% end -%>
+
 <% end -%>
