@@ -32,6 +32,8 @@ mkdir -p <%= mount %>
 <% end -%>
 <% end -%>
 
+<% end -%>
+
 <% if config.networks.ib.defined -%>
 # Infiniband/Lustre hang fix
 cat << EOF > /etc/systemd/system/lustre.service
@@ -56,6 +58,4 @@ EOF
 chmod +x /usr/local/sbin/stop-lustre
 systemctl daemon-reload
 systemctl enable lustre --now
-<% end -%>
-
 <% end -%>
