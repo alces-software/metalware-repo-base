@@ -10,26 +10,45 @@ questions:
     question: 'Is a compute node?'
     type: 'boolean'
 
-  - &flightdirect_sourceurl
-    identifier: flightdirect_sourceurl
-    question: 'URL for downloading Flight Direct installer (recommended to be somewhere local to the controller)'
-    default: 'https://s3-eu-west-1.amazonaws.com/alces-flight/FlightDirect/1.0.4/flight-install'
+  - &flightdirect_iscache
+    identifier: flightdirect_iscache
+    question: 'Is a local cache server?'
+    type: 'boolean'
+    default: false
+
+  - &flightdirect_cacheserver
+    identifier: flightdirect_cacheserver
+    question: 'IP address of the cache server'
+
+  - &flightdirect_deploy_key
+    identifier: flightdirect_deploy_key
+    question: 'Private SSH key for accessing the Anvil repository (on one line with \n instead of line breaks)'
+
+  - &flightdirect_version
+    identifier: flightdirect_version
+    question: 'Version of flightdirect to install'
+    default: '2.0.0'
 
 domain:
   - *flightdirect_isclient
-  - *flightdirect_sourceurl
+  - *flightdirect_version
+  - *flightdirect_deploy_key
+  - *flightdirect_cacheserver
 
 group:
   - *flightdirect_isserver
   - *flightdirect_isclient
-  - *flightdirect_sourceurl
+  - *flightdirect_version
 
 node:
   - *flightdirect_isserver
   - *flightdirect_isclient
-  - *flightdirect_sourceurl
+  - *flightdirect_iscache
+  - *flightdirect_version
 
 local:
   - *flightdirect_isserver
   - *flightdirect_isclient
-  - *flightdirect_sourceurl
+  - *flightdirect_iscache
+  - *flightdirect_version
+
