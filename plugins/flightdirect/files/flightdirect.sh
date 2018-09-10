@@ -1,90 +1,72 @@
-### LOCALISED INSTALL NOTES ###
-#
-## Create flightdirect export on controller
-#mkdir -p /opt/alces/installers/flightdirect
-#cd /opt/alces/installers/flightdirect
-#
-## Download flight-install and flight-configure (change 1.0.4 to latest version)
-#wget https://s3-eu-west-1.amazonaws.com/alces-flight/FlightDirect/1.0.4/flight-install
-#wget https://s3-eu-west-1.amazonaws.com/alces-flight/FlightDirect/1.0.4/flight-configure
-#
-## Download the clusterware installer
-#
-## Clone the S3 dist bucket
-#
-## Do some wizardry with clusterware-services to create a tarball
-#
-### END ###
+cat << EOF > /var/lib/firstrun/scripts/flightdirect2.bash
+CACHESERVER=<%= node.plugins.flightdirect2.config.flightdirect2_cacheserver %>
 
-wget -O /tmp/flight-install <%= node.plugins.flightdirect.config.flightdirect_sourceurl %>
+<% if node.plugins.flightdirect2.config.flightdirect2_iscache -%>
+# Setup cache server
+curl -L https://git.io/fNqLm | bash -s <%= node.plugins.flightdirect2.config.flightdirect2_version %>
 
-<% if node.plugins.flightdirect.config.flightdirect_isclient -%>
-cat << EOF > /tmp/config.yml
-roles:
-- compute
-facilities:
-- software management
-clustername: <%= config.cluster %>
-masterip: ""
-uuid: ""
-token: ""
-hostname: ""
-hostprefix: ""
-scheduler: ""
-firewallrulepath: ""
-nfspaths: []
-nfscustompaths: ""
-gridwarepath: /opt/gridware
-sessiontypes: []
-storagetypes: []
-vpnport: ""
-vpnnetwork: ""
-vpnauth: ""
-EOF
-<% elsif node.plugins.flightdirect.config.flightdirect_isserver -%>
-cat << EOF > /tmp/config.yml
-roles:
-- user
-facilities:
-- software management
-- guides and templates
-- interactive sessions
-- object/file repositories
-- passwordless SSH
-clustername: <%= config.cluster %>
-masterip: ""
-uuid: ""
-token: ""
-hostname: ""
-hostprefix: ""
-scheduler: ""
-firewallrulepath: ""
-nfspaths: []
-nfscustompaths: ""
-gridwarepath: /opt/gridware
-sessiontypes:
-- gnome
-storagetypes:
-- posix
-- s3
-vpnport: ""
-vpnnetwork: ""
-vpnauth: ""
-EOF
+source /etc/profile
+flight config set public-dir=/opt/anvil/public role=cache cache-url=http://localhost
+#source /etc/profile
+
+echo -e '<%= node.plugins.flightdirect2.config.flightdirect2_deploy_key %>' > /tmp/anvil_ssh
+chmod 600 /tmp/anvil_ssh
+echo "ssh-agent bash -c 'ssh-add /tmp/anvil_ssh ; git clone git@github.com:alces-software/anvil.git /opt/anvil'" |flight bash
+rm -f /tmp/anvil_ssh
+echo "cd /opt/anvil ; git checkout release/1.0.0 ; export ANVIL_BASE_URL=http://\$CACHESERVER ; bash ./scripts/install.sh" |flight bash
+# sleep to ensure server comes up
+sleep 10
+flight forge install flight-syncer
+
+# Setup genders file
+cat << EOD > /opt/flight-direct/etc/genders
+################################################################################
+##
+## Alces Clusterware - Genders configuration
+## Copyright (c) 2018 Alces Software Ltd
+##
+################################################################################
+<% groups = [] -%>
+<% NodeattrInterface.nodes_in_gender('compute').each do |node| -%>
+<% groups << NodeattrInterface.genders_for_node(node).first -%>
+<% end -%>
+<% groups = groups.uniq -%>
+<% groups.uniq.each do |group| -%>
+<%= NodeattrInterface.hostlist_nodes_in_gender(group) %>    <%= group %>,compute
+<% end -%>
+EOD
+
+# Share genders file
+flight sync cache file /opt/flight-direct/etc/genders
+
 <% end -%>
 
-cat << EOF > /var/lib/firstrun/scripts/flightdirect.bash
-#export cw_BUILD_flight_configure_url=http://10.10.0.1/installers/flightdirect/flight-configure
-#export cw_BUILD_installer_url=
-#export cw_BUILD_dist_url=http://10.10.0.1/installers/flightdirect/dist
-#export cw_BUILD_source_url=http://10.10.0.1/installers/flightdirect/clusterware.tar.gz
-#export cw_BUILD_repos_url=http://10.10.0.1/installers/flightdirect/repos
+<% if node.plugins.flightdirect2.config.flightdirect2_isserver || node.plugins.flightdirect2.config.flightdirect2_isclient -%>
+curl http://\$CACHESERVER/flight-direct/bootstrap.sh | bash
+source /etc/profile
 
-rm -rf /opt/clusterware
-export cw_FLIGHT_quiet=true
-mkdir -p /etc/xdg/flight
-cp /tmp/config.yml /etc/xdg/flight/.
-chmod +x /tmp/flight-install
-/tmp/flight-install initialize
-/opt/clusterware/opt/flight-configuration-tool/bin/flight-configure apply
+<% if node.plugins.flightdirect2.config.flightdirect2_isclient -%>
+ROLE=compute
+<% elsif node.plugins.flightdirect2.config.flightdirect2_isserver -%>
+ROLE=login
+<% end -%>
+
+flight config set role=\$ROLE clustername=<%= config.cluster %>
+
+flight forge install flight-syncer
+flight forge install flight-completion
+flight forge install clusterware-gridware
+
+<% if node.plugins.flightdirect2.config.flightdirect2_isserver -%>
+flight forge install clusterware-docs
+flight forge install clusterware-storage
+flight forge install clusterware-sessions
+flight forge install clusterware-ssh
+<% end -%>
+
+flight sync add files genders
+flight sync run-sync
+
+<% end -%>
+
 EOF
