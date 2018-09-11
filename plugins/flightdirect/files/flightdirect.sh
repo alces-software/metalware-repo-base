@@ -3,7 +3,7 @@ CACHESERVER=<%= node.plugins.flightdirect2.config.flightdirect2_cacheserver %>
 
 <% if node.plugins.flightdirect2.config.flightdirect2_iscache -%>
 # Setup cache server
-curl -L https://git.io/fNqLm | bash -s <%= node.plugins.flightdirect2.config.flightdirect2_version %>
+curl -L https://raw.githubusercontent.com/alces-software/flight-direct/master/scripts/bootstrap.sh | bash -s <%= node.plugins.flightdirect2.config.flightdirect2_version %>
 
 source /etc/profile
 flight config set public-dir=/opt/anvil/public role=cache cache-url=http://localhost
