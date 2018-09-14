@@ -127,6 +127,7 @@ questions:
 
 domain:
   - *cluster_name
+  - *domain
   - *root_password
   - *root_ssh_key
   - *dns_type
