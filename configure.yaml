@@ -126,6 +126,7 @@ questions:
     default: 'gateway.<%= config.networks.pri.domain %>'
 
 domain:
+  - *cluster_name
   - *root_password
   - *root_ssh_key
   - *dns_type
