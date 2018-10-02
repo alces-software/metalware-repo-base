@@ -37,7 +37,7 @@ cat << EOD > /opt/flight-direct/etc/genders
 EOD
 
 # Share genders file
-flight sync cache file /opt/flight-direct/etc/genders
+flight sync_cache file /opt/flight-direct/etc/genders
 
 <% end -%>
 
@@ -64,7 +64,7 @@ flight forge install clusterware-sessions
 flight forge install clusterware-ssh
 <% end -%>
 
-flight sync add files genders
+flight sync files genders
 flight sync run-sync
 
 <% end -%>
