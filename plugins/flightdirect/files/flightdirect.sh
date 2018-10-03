@@ -63,6 +63,10 @@ flight forge install clusterware-docs
 flight forge install clusterware-storage
 flight forge install clusterware-sessions
 flight forge install clusterware-ssh
+
+# Enable gnome session
+flight session enable base/gnome
+
 <% end -%>
 
 flight sync files genders
