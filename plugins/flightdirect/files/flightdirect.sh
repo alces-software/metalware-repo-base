@@ -68,6 +68,9 @@ flight forge install clusterware-ssh
 flight sync files genders
 flight sync run-sync
 
+# Disable user gridware
+sed -i 's/.*cw_GRIDWARE_allow_users=.*/cw_GRIDWARE_allow_users=false/g' /opt/flight-direct/etc/gridware.rc
+
 <% end -%>
 
 EOF
