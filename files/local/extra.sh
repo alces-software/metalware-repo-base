@@ -1,2 +1,3 @@
 # Install firefox for IPMI/disk array management
-yum -y install firefox
+# Install mosh for mobile shell support
+yum -y install firefox mosh
