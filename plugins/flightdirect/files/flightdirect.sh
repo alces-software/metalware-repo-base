@@ -56,6 +56,7 @@ flight config set role=\$ROLE clustername=<%= config.cluster %>
 flight forge install flight-syncer
 flight forge install flight-completion
 flight forge install clusterware-gridware
+flight forge install pdsh
 
 <% if node.plugins.flightdirect2.config.flightdirect2_isserver -%>
 flight forge install clusterware-docs
