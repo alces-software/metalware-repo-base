@@ -1,15 +1,15 @@
-cat << EOF > /var/lib/firstrun/scripts/flightdirect2.bash
-CACHESERVER=<%= node.plugins.flightdirect2.config.flightdirect2_cacheserver %>
+cat << EOF > /var/lib/firstrun/scripts/flightdirect.bash
+CACHESERVER=<%= node.plugins.flightdirect.config.flightdirect_cacheserver %>
 
-<% if node.plugins.flightdirect2.config.flightdirect2_iscache -%>
+<% if node.plugins.flightdirect.config.flightdirect_iscache -%>
 # Setup cache server
-curl -L https://raw.githubusercontent.com/alces-software/flight-direct/master/scripts/bootstrap.sh | bash -s <%= node.plugins.flightdirect2.config.flightdirect2_version %>
+curl -L https://raw.githubusercontent.com/alces-software/flight-direct/master/scripts/bootstrap.sh | bash -s <%= node.plugins.flightdirect.config.flightdirect_version %>
 
 source /etc/profile
 flight config set public-dir=/opt/anvil/public role=cache cache-url=http://localhost
 #source /etc/profile
 
-echo -e '<%= node.plugins.flightdirect2.config.flightdirect2_deploy_key %>' > /tmp/anvil_ssh
+echo -e '<%= node.plugins.flightdirect.config.flightdirect_deploy_key %>' > /tmp/anvil_ssh
 chmod 600 /tmp/anvil_ssh
 echo "ssh-agent bash -c 'ssh-add /tmp/anvil_ssh ; git clone git@github.com:alces-software/anvil.git /opt/anvil'" |flight bash
 rm -f /tmp/anvil_ssh
@@ -41,13 +41,13 @@ flight sync_cache file /opt/flight-direct/etc/genders
 
 <% end -%>
 
-<% if node.plugins.flightdirect2.config.flightdirect2_isserver || node.plugins.flightdirect2.config.flightdirect2_isclient -%>
+<% if node.plugins.flightdirect.config.flightdirect_isserver || node.plugins.flightdirect.config.flightdirect_isclient -%>
 curl http://\$CACHESERVER/flight-direct/bootstrap.sh | bash
 source /etc/profile
 
-<% if node.plugins.flightdirect2.config.flightdirect2_isclient -%>
+<% if node.plugins.flightdirect.config.flightdirect_isclient -%>
 ROLE=compute
-<% elsif node.plugins.flightdirect2.config.flightdirect2_isserver -%>
+<% elsif node.plugins.flightdirect.config.flightdirect_isserver -%>
 ROLE=login
 <% end -%>
 
@@ -59,7 +59,7 @@ flight forge install clusterware-gridware
 flight forge install clusterware-storage
 flight forge install pdsh
 
-<% if node.plugins.flightdirect2.config.flightdirect2_isserver -%>
+<% if node.plugins.flightdirect.config.flightdirect_isserver -%>
 flight forge install clusterware-docs
 flight forge install clusterware-sessions
 flight forge install clusterware-ssh
