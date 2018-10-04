@@ -56,15 +56,16 @@ flight config set role=\$ROLE clustername=<%= config.cluster %>
 flight forge install flight-syncer
 flight forge install flight-completion
 flight forge install clusterware-gridware
+flight forge install clusterware-storage
 flight forge install pdsh
 
 <% if node.plugins.flightdirect2.config.flightdirect2_isserver -%>
 flight forge install clusterware-docs
-flight forge install clusterware-storage
 flight forge install clusterware-sessions
 flight forge install clusterware-ssh
 
-# Enable gnome session
+# Enable sessions
+flight session enable base/default
 flight session enable base/gnome
 
 <% end -%>
@@ -74,6 +75,11 @@ flight sync run-sync
 
 # Disable user gridware
 sed -i 's/.*cw_GRIDWARE_allow_users=.*/cw_GRIDWARE_allow_users=false/g' /opt/flight-direct/etc/gridware.rc
+
+# Enable storage types
+flight storage enable base/posix
+flight storage enable base/s3
+
 
 <% end -%>
 
