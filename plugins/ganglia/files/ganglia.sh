@@ -12,7 +12,7 @@ globals {
   host_tmax = 20
   cleanup_threshold = 300
   gexec = no
-  send_metadata_interval = 0
+  send_metadata_interval = 30
 }
 cluster {
   name = "<%= domain.config.cluster %>"
@@ -24,7 +24,7 @@ host {
   location = "unspecified"
 }
 udp_send_channel {
-  mcast_join = <%= node.plugins.ganglia.config.ganglia_serverip %>
+  host = <%= node.plugins.ganglia.config.ganglia_serverip %>
   port = 8649
   ttl = 1
 }
