@@ -6,14 +6,11 @@ CACHESERVER=<%= node.plugins.flightdirect.config.flightdirect_cacheserver %>
 curl -L https://raw.githubusercontent.com/alces-software/flight-direct/master/scripts/bootstrap.sh | bash -s <%= node.plugins.flightdirect.config.flightdirect_version %>
 
 source /etc/profile
-flight config set public-dir=/opt/anvil/public role=cache cache-url=http://localhost
-#source /etc/profile
 
-echo -e '<%= node.plugins.flightdirect.config.flightdirect_deploy_key %>' > /tmp/anvil_ssh
-chmod 600 /tmp/anvil_ssh
-echo "ssh-agent bash -c 'ssh-add /tmp/anvil_ssh ; git clone git@github.com:alces-software/anvil.git /opt/anvil'" |flight bash
-rm -f /tmp/anvil_ssh
-echo "cd /opt/anvil ; git checkout release/1.0.0 ; export ANVIL_BASE_URL=http://\$CACHESERVER ; bash ./scripts/install.sh" |flight bash
+flight forge install flight-cache
+flight anvil snapshot \$CACHESERVER
+flight anvil start
+
 # sleep to ensure server comes up
 sleep 10
 flight forge install flight-syncer
@@ -53,19 +50,10 @@ ROLE=login
 
 flight config set role=\$ROLE clustername=<%= config.cluster %>
 
-flight forge install flight-syncer
-flight forge install flight-completion
-flight forge install clusterware-gridware
-flight forge install clusterware-storage
-flight forge install pdsh
+flight forge install flight-\$ROLE
 
 <% if node.plugins.flightdirect.config.flightdirect_isserver -%>
-flight forge install clusterware-docs
-flight forge install clusterware-sessions
-flight forge install clusterware-ssh
-
 # Enable sessions
-flight session enable base/default
 flight session enable base/gnome
 
 <% end -%>
@@ -77,9 +65,7 @@ flight sync run-sync
 sed -i 's/.*cw_GRIDWARE_allow_users=.*/cw_GRIDWARE_allow_users=false/g' /opt/flight-direct/etc/gridware.rc
 
 # Enable storage types
-flight storage enable base/posix
 flight storage enable base/s3
-
 
 <% end -%>
 
