@@ -20,10 +20,6 @@ questions:
     identifier: flightdirect_cacheserver
     question: 'IP address of the cache server'
 
-  - &flightdirect_deploy_key
-    identifier: flightdirect_deploy_key
-    question: 'Private SSH key for accessing the Anvil repository (on one line with \n instead of line breaks)'
-
   - &flightdirect_version
     identifier: flightdirect_version
     question: 'Version of flightdirect to install'
@@ -32,7 +28,6 @@ questions:
 domain:
   - *flightdirect_isclient
   - *flightdirect_version
-  - *flightdirect_deploy_key
   - *flightdirect_cacheserver
 
 group:
