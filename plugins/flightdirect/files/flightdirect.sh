@@ -8,8 +8,8 @@ curl -L https://raw.githubusercontent.com/alces-software/flight-direct/master/sc
 source /etc/profile
 
 flight forge install flight-cache
-flight anvil snapshot \$CACHESERVER
-flight anvil start
+flight cache snapshot \$CACHESERVER
+flight cache start
 
 # sleep to ensure server comes up
 sleep 10
