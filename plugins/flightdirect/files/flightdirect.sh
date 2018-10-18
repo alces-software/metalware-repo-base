@@ -39,8 +39,10 @@ flight sync_cache file /opt/flight-direct/etc/genders
 <% end -%>
 
 <% if node.plugins.flightdirect.config.flightdirect_isserver || node.plugins.flightdirect.config.flightdirect_isclient -%>
+<% unless node.plugins.flightdirect.config.flightdirect_iscache -%>
 curl http://\$CACHESERVER/flight-direct/bootstrap.sh | bash
 source /etc/profile
+<% end -%>
 
 <% if node.plugins.flightdirect.config.flightdirect_isclient -%>
 ROLE=compute
