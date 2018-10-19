@@ -9,10 +9,10 @@ source /etc/profile
 
 flight forge install flight-cache
 flight cache snapshot \$CACHESERVER
-flight cache start
+systemctl start flight-cache
 
 # sleep to ensure server comes up
-sleep 10
+sleep 20
 flight forge install flight-syncer
 
 # Setup genders file
