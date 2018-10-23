@@ -34,6 +34,7 @@ cat << EOD > /opt/flight-direct/etc/genders
 EOD
 
 # Share genders file
+flight config set public-dir=/opt/flight-direct/opt/public
 flight sync_cache file /opt/flight-direct/etc/genders
 
 <% end -%>
