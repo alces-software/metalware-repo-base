@@ -34,8 +34,7 @@ cat << EOD > /opt/flight-direct/etc/genders
 EOD
 
 # Share genders file
-flight config set public-dir=/opt/flight-direct/opt/public
-flight sync_cache file /opt/flight-direct/etc/genders
+flight sync cache file /opt/flight-direct/etc/genders
 
 <% end -%>
 
@@ -61,7 +60,7 @@ flight session enable base/gnome
 
 <% end -%>
 
-flight sync files genders
+flight sync add files genders
 flight sync run-sync
 
 # Disable user gridware
