@@ -15,22 +15,30 @@ questions:
     question: 'Networks to use for lustre mounts'
     default: 'o2ib(<%= config.networks.ib.interface %>),tcp0(<%= config.networks.pri.interface %>)'
 
+  - &lustre_mount_servers
+    identifier: lustre_mount_servers
+    question: 'Define primary lustre client mount servers'
+    default: 'mds1.ib@o2ib0:mds2.ib@o2ib0'
+
 domain:
   - *lustre_isclient
   - *lustre_networks
+  - *lustre_mount_servers
 
 group:
   - *lustre_isserver
   - *lustre_isclient
   - *lustre_networks
+  - *lustre_mount_servers
 
 node:
   - *lustre_isserver
   - *lustre_isclient
   - *lustre_networks
+  - *lustre_mount_servers
 
 local:
   - *lustre_isserver
   - *lustre_isclient
   - *lustre_networks
-
+  - *lustre_mount_servers
