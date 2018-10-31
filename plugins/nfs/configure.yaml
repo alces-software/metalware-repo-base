@@ -4,17 +4,22 @@ questions:
     question: 'Is an NFS server?'
     type: 'boolean'
     default: false
-        
+
   - &nfs_isclient
     identifier: nfs_isclient
     question: 'Is an NFS client?'
     type: 'boolean'
 
-domain: []
+  - &primary_nfs_server
+    identifier: primary_nfs_server
+    question: "DNS name / IP of primary NFS server for default shares"
+    default: "master1"
+
+domain:
+  - *primary_nfs_server
 
 group: []
 
 node: []
 
 local: []
-

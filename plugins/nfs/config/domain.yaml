@@ -13,21 +13,21 @@ nfs_isclient: true
 nfs_mounts:
   /opt/apps:
     defined: true
-    server: master1
+    server: <%= node.answer.primary_nfs_server%>
     export: /export/apps
   /opt/gridware:
     defined: true
-    server: master1
+    server: <%= node.answer.primary_nfs_server%>
     export: /export/gridware
   /opt/service:
     defined: true
-    server: master1
+    server: <%= node.answer.primary_nfs_server%>
     export: /export/service
   /opt/site:
     defined: true
-    server: master1
+    server: <%= node.answer.primary_nfs_server%>
     export: /export/site
   /users:
     defined: true
-    server: master1
+    server: <%= node.answer.primary_nfs_server%>
     export: /export/users
