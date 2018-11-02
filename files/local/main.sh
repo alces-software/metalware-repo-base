@@ -49,7 +49,7 @@ echo 'Running setup scripts for plugin `<%= plugin.name %>`:'
     <% if script.error %>
 echo '<%= script.name %>: <%= script.error %>'
     <% else %>
-bash "<%= script.rendered_path %>"
+bash "/var/lib/metalware/rendered/<%= script.relative_rendered_path %>"
     <% end %>
   <% end %>
 <% end %>
@@ -72,7 +72,7 @@ echo 'Running scripts for plugin `<%= plugin.name %>`:'
     <% if script.error %>
 echo '<%= script.name %>: <%= script.error %>'
     <% else %>
-bash "<%= script.rendered_path %>"
+bash "/var/lib/metalware/rendered/<%= script.relative_rendered_path %>"
     <% end %>
   <% end %>
 <% end %>
