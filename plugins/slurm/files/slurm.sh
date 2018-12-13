@@ -88,14 +88,6 @@ StorageUser=slurm
 EOF
 
 systemctl start slurmdbd
-
-# Configure cluster and users
-sacctmgr -i add cluster <%= config.domain %>
-sacctmgr -i add account siteadmin Description="Site admin users"
-sacctmgr -i create user name=alces-cluster DefaultAccount=siteadmin
-sacctmgr -i modify user alces-cluster set adminlevel=admin
-sacctmgr -i modify user siteuser set adminlevel=operator
-
 <% end -%>
 
 echo '<%= node.plugins.slurm.config.slurm_mungekey %>' > /etc/munge/munge.key
@@ -111,6 +103,13 @@ chown nobody /var/log/slurm
 echo "$SLURMCONF" > /etc/slurm/slurm.conf
 
 <% if (node.plugins.slurm.config.slurm_isserver rescue false) -%>
+# Configure cluster and users
+sacctmgr -i add cluster <%= config.domain %>
+sacctmgr -i add account siteadmin Description="Site admin users"
+sacctmgr -i create user name=alces-cluster DefaultAccount=siteadmin
+sacctmgr -i modify user alces-cluster set adminlevel=admin
+sacctmgr -i modify user siteuser set adminlevel=operator
+
 systemctl enable slurmctld
 systemctl start slurmctld
 <% else -%>
