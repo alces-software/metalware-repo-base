@@ -50,6 +50,10 @@ mysql -uroot -e "create user 'slurm'@'localhost' identified by '';"
 mysql -uroot -e "grant all on slurm_acct_db.* TO 'slurm'@'localhost';"
 mysql -uroot -e "CREATE DATABASE slurm_acct_db;"
 
+# Create spool directory
+mkdir -p /var/spool/slurm.state
+chown nobody:nobody /var/spool/slurm.state
+
 # Configure slurmdbd
 cat << EOF > /etc/slurm/slurmdbd.conf
 # Archive info
