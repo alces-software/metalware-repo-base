@@ -45,6 +45,10 @@ systemctl enable mariadb
 systemctl enable slurmdbd
 systemctl start mariadb
 
+# Create spool directory
+mkdir -p /var/spool/slurm.state
+chown nobody:nobody /var/spool/slurm.state
+
 # Setup DB account and permissions
 mysql -uroot -e "create user 'slurm'@'localhost' identified by '';"
 mysql -uroot -e "grant all on slurm_acct_db.* TO 'slurm'@'localhost';"
