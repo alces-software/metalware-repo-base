@@ -4,6 +4,6 @@ files:
     - /var/lib/metalware/plugins/yumrepo/files/repos.sh
 yumrepo_buildurl: http://10.10.0.1/repo/centos/7/base/
 yumrepo_isserver: false
-yumrepo_sourcerepos: base.alcesinternal
+yumrepo_sourcerepos: base.alcesinternal,openflight.alcesaws
 yumrepo_useclientrepofile: true
 yumrepo_clientrepofile: http://10.10.0.1/repo/client.repo
