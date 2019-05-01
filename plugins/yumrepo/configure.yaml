@@ -7,7 +7,7 @@ questions:
     dependent:
       - identifier: yumrepo_sourcerepos
         question: 'Repoman source repo filenames'
-        default: 'base.upstream'
+        default: 'base.upstream,openflight.repo'
 
   - &yumrepo_buildurl
     identifier: yumrepo_buildurl
