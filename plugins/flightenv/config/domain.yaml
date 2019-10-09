@@ -1,0 +1,4 @@
+priority: 20
+files:
+  setup:
+    - /var/lib/metalware/plugins/flightenv/files/flightenv.sh
