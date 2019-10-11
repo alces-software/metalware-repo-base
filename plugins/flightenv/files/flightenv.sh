@@ -13,7 +13,7 @@ yum -y swap flight-starter-banner flight-direct-flight-starter-banner
 #
 # Flight Environment
 #
-yum -y install flight-env
+yum -y install flight-env flight-desktop
 
 # Set cluster name
 /opt/flight/bin/flight config set cluster.name <%= config.cluster %>
