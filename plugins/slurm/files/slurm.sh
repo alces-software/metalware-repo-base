@@ -113,6 +113,8 @@ sacctmgr -i add account siteadmin Description="Site admin users"
 sacctmgr -i create user name=alces-cluster DefaultAccount=siteadmin
 sacctmgr -i modify user alces-cluster set adminlevel=admin
 sacctmgr -i modify user siteuser set adminlevel=operator
+sacctmgr -i add account default
+sacctmgr -i modify account default set description="default account for standard users"
 
 systemctl enable slurmctld
 systemctl start slurmctld
